@@ -2,7 +2,7 @@ import React from 'react'
 import { ReactComponent as PlaySvg } from './play-button-svgrepo-com.svg';
 const Button = () => {
   return (
-      <div className='flex gap-4 text-3xl justify-between rounded-full bg-red-600 px-6 pb-2 pt-2.5 text-white hover:bg-red-500'>
+      <div className='flex gap-3 text-3xl justify-between rounded-full shadow-2xl border-2 transition ease-in-out duration-300 border-black bg-red-700 px-6 pb-2 pt-2.5 text-white hover:bg-red-900'>
           <div><PlaySvg/></div>
           <div>PLAY</div>
     </div>
