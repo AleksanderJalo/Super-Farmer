@@ -3,7 +3,7 @@
 @tailwind utilities;
 @font-face {
   font-family: "Moonkids";
-  src: url("../public/Moonkids.ttf");
+  src: url("../public/Moonkids.otf");
 }
 @font-face {
   font-family: "Plaguard";
