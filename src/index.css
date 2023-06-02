@@ -5,6 +5,10 @@
   font-family: "Moonkids";
   src: url("../public/Moonkids.ttf");
 }
+@font-face {
+  font-family: "Plaguard";
+  src: url("../public/Plaguard.ttf")
+}
 
 .logo {
   -webkit-text-stroke-width: 3px;

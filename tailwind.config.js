@@ -4,7 +4,8 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        moonkids: ["Moonkids", "sans-serif"]
+        moonkids: ["Moonkids", "sans-serif"],
+        plaguard: ["Plaguard", "sans-serif"]
       }
     },
   },
