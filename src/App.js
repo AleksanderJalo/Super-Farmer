@@ -12,17 +12,20 @@ function App() {
   };
 
   return (
-    <div className="farm w-full h-screen text-center flex flex-col justify-center items-center gap-28">
-      <Logo/>
-      {!playClick && (
-        <div className="flex justify-center">
-          <div className="flex flex-col gap-10 border-[7px] border-black p-8 wood">
-            <PlayButton onClick={playHandler} />
-            <HtpButton />
+    <div>
+      <div className="farm w-full h-screen text-center flex flex-col justify-center items-center gap-28">
+        <div className="absolute object-cover bg-gradient-to-tr from-green-700 to-blue-700 mix-blend-overlay w-full h-full"></div>
+        <Logo />
+        {!playClick && (
+          <div className="flex justify-center">
+            <div className="flex flex-col gap-10 border-[7px] border-black p-8 wood z-20">
+              <PlayButton onClick={playHandler} />
+              <HtpButton />
+            </div>
           </div>
-        </div>
-      )}
-      {playClick && <PlayButton />}
+        )}
+        {playClick && <PlayButton />}
+      </div>
     </div>
   );
 }
