@@ -7,7 +7,17 @@
 }
 @font-face {
   font-family: "Plaguard";
-  src: url("../public/Plaguard.ttf")
+  src: url("../public/Plaguard.ttf");
+}
+
+.wood {
+  background-image: url("./images/wood.jpg");
+  background-size: cover;
+}
+
+.farm {
+  background-image: url("./images/farmaBg.jpg");
+  background-size: cover;
 }
 
 .logo {

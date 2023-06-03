@@ -8,17 +8,21 @@ function App() {
   const [playClick, setPlayClick] = useState(false);
   const playHandler = () => {
     setPlayClick(true);
-    console.log(playClick)
-  }
+    console.log(playClick);
+  };
 
   return (
-    <div className="bg-slate-600 w-full h-screen text-center flex flex-col justify-center gap-40">
+    <div className="farm w-full h-screen text-center flex flex-col justify-center items-center gap-28">
       <Logo/>
-      {!playClick && <div className="flex justify-center gap-10">
-        <PlayButton onClick={ playHandler } />
-        <HtpButton/>
-      </div>}
-      {playClick && <PlayButton/>}
+      {!playClick && (
+        <div className="flex justify-center">
+          <div className="flex flex-col gap-10 border-[7px] border-black p-8 wood">
+            <PlayButton onClick={playHandler} />
+            <HtpButton />
+          </div>
+        </div>
+      )}
+      {playClick && <PlayButton />}
     </div>
   );
 }
