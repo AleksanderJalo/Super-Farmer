@@ -3,7 +3,7 @@ import { ReactComponent as QuestionMark } from "./question-mark.svg";
 
 const HtpButton = () => {
   return (
-    <div className="font-plaguard flex shadow-2xl border-4 transition ease-in-out duration-400  border-black text-white group">
+    <div className="font-plaguard flex shadow-2xl border-4 transition ease-in-out duration-400  border-black text-white group z-20">
       <div className="bg-green-800 border-r-4 border-black group-hover:bg-green-900 p-1 px-2">
         <QuestionMark />
       </div>

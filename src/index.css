@@ -10,6 +10,11 @@
   src: url("../public/Plaguard.ttf");
 }
 
+@font-face {
+  font-family: "Skranji";
+  src: url("../public/Skranji-Regular.ttf")
+}
+
 .wood {
   background-image: url("./images/wood.jpg");
   background-size: cover;

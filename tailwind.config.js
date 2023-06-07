@@ -5,7 +5,8 @@ module.exports = {
     extend: {
       fontFamily: {
         moonkids: ["Moonkids", "sans-serif"],
-        plaguard: ["Plaguard", "sans-serif"]
+        plaguard: ["Plaguard", "sans-serif"],
+        skranji: ["Skranji", "sans-serif"]
       }
     },
   },
