@@ -6,7 +6,7 @@ const GameplayPage = () => {
   return (
     <div className="flex w-full h-full items-center justify-center static">
       <img
-        className="absolute z-30 left-28 top-20 h-[200px] opacity-90"
+        className="absolute z-30 left-36 top-20 h-[200px] opacity-90 hidden lg:block"
         src={logo}
         alt="logo"
       />
