@@ -8,14 +8,27 @@ import { ReactComponent as Sheep } from "../images/sheep.svg";
 import { ReactComponent as Wolf } from "../images/wolf.svg";
 const SpinWheel = () => {
   const [isSpinning, setIsSpinning] = useState(false);
-  const animals = ["r", "r", "r", "r", "r", "r", "s", "s", "p", "p", "h", "w"];
   const [spinTime, setSpinTime] = useState(0);
-  
+
   useEffect(() => {
+    const animals = [
+      "r",
+      "r",
+      "r",
+      "r",
+      "r",
+      "r",
+      "s",
+      "s",
+      "p",
+      "p",
+      "h",
+      "w",
+    ];
     let interval;
     const rollAnimal = () => {
       const animalRolled = animals[Math.floor(Math.random() * animals.length)];
-  
+
       switch (animalRolled) {
         case "r":
           return <Rabbit />;
@@ -27,21 +40,22 @@ const SpinWheel = () => {
           return <Horse />;
         case "w":
           return <Wolf />;
+        default:
+          return;
       }
     };
 
     const changeAnimal = () => {
-      if (spinTime > 0) {
-        interval = setInterval(() => {
-          setAnimal(rollAnimal());
-          setSpinTime((prev) => prev - 1/50);
-        }, 50);
-      }
+      interval = setInterval(() => {
+        setAnimal(rollAnimal());
+        setSpinTime((prev) => prev - 1 / 25);
+      }, 50);
+    };
+    if (spinTime > 0) {
+      changeAnimal();
+      return () => clearInterval(interval);
     }
-    changeAnimal();
-
-    return () => clearInterval(interval);
-  }, [setIsSpinning, isSpinning, animals]);
+  }, [setIsSpinning, isSpinning, spinTime]);
 
   const [animal, setAnimal] = useState();
   const spinHandler = () => {
@@ -49,10 +63,12 @@ const SpinWheel = () => {
   };
   return (
     <div className="flex flex-col">
-      <div className="h-[140px] w-[140px] border-2 border-black pl-4 pt-3">
+      <div className="h-[140px] w-[140px] border-4 border-black pl-4 pt-3">
         {animal}
       </div>
-      <button onClick={spinHandler}>spin</button>
+      <button className="mt-5" onClick={spinHandler}>
+        SPIN
+      </button>
     </div>
   );
 };

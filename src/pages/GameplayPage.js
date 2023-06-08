@@ -15,13 +15,14 @@ const GameplayPage = () => {
         <PlayerModal playerNr="Player 2" extraStyles="ml-5" />
         <div className="flex flex-col justify-between h-[100%]">
           <PlayerModal playerNr="Player 3" extraStyles="mt-5" />
-          <div className="text-black border-2 border-black bg-white text-6xl p-4">Player 1 Turn
-            <div className="flex justify-center gap-10 mt-10 mb-8">
-              <SpinWheel/>
-              <SpinWheel/>
+          <div className="text-black border-4 border-black bg-white text-6xl ml-4">
+            <div className="w-full bg-green-600 px-4 py-3 text-white border-b-4 border-black">Player 1 Turn</div>
+            <div className="flex justify-center gap-10 mt-10 mb-8 p-4">
+              <SpinWheel />
+              <SpinWheel />
             </div>
           </div>
-          
+
           <PlayerModal playerNr="Player 1" extraStyles="mb-5" />
         </div>
         <PlayerModal playerNr="Player 4" extraStyles="mr-5" />
