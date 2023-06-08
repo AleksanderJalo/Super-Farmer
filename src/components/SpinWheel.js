@@ -6,6 +6,7 @@ import { ReactComponent as Pig } from "../images/pig.svg";
 import { ReactComponent as Rabbit } from "../images/rabbit.svg";
 import { ReactComponent as Sheep } from "../images/sheep.svg";
 import { ReactComponent as Wolf } from "../images/wolf.svg";
+import { ReactComponent as QuestionMark } from "../images/questionSpin.svg";
 import SpinButton from "./SpinButton";
 const SpinWheel = (props) => {
   const [isSpinning, setIsSpinning] = useState(false);
@@ -91,14 +92,14 @@ const SpinWheel = (props) => {
     }
   }, [setIsSpinning, isSpinning, spinTime, props.isLeft]);
 
-  const [animal, setAnimal] = useState();
+  const [animal, setAnimal] = useState(<QuestionMark/>);
   const spinHandler = () => {
     setSpinTime(1);
   };
   return (
     <div className="flex flex-col">
       <div
-        className={`h-[140px] w-[140px] ml-2 border-4 border-black pl-4 pt-3 ${
+        className={`h-[140px] w-[140px] ml-2 border-4 border-black pl-[15px] pt-4 ${
           props.isLeft && didLeftSpin ? "bg-green-700" : ""
         } ${!props.isLeft && didRightSpin ? "bg-green-700" : ""}`}
       >

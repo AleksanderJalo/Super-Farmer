@@ -9,14 +9,14 @@ import { ReactComponent as BigDog } from "../images/bigDog.svg";
 
 const TradingSheet = () => {
   return (
-    <div className="absolute top-5 left-[500px] text-5xl bg-white flex flex-col border-black border-4">
+    <div className="absolute top-5 left-[450px] text-5xl bg-white flex flex-col border-black border-4">
       <div className="bg-[#e2525c] px-4 py-4 border-b-4 border-black text-white whitespace-nowrap">
         Cheat Sheet
       </div>
       <div className="p-2 flex gap-2 justify-center border-b-4 border-black">
         6 <span className="text-3xl mt-1">x</span>
         <Rabbit className="h-[45px] w-[45px] " />
-        =1<span className="text-3xl mt-1">x</span>
+        = 1<span className="text-3xl mt-1">x</span>
         <Sheep className="h-[50px] w-[50px]" />
       </div>
       <div className="p-2 flex gap-2 justify-center border-b-4 border-black">
