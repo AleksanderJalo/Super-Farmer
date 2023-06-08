@@ -1,7 +1,7 @@
 import React from "react";
 import logo from "../images/logo.png";
 import PlayerModal from "../components/PlayerModal";
-
+import SpinWheel from "../components/SpinWheel";
 const GameplayPage = () => {
   return (
     <div className="flex w-full h-full items-center justify-center static">
@@ -15,6 +15,13 @@ const GameplayPage = () => {
         <PlayerModal playerNr="Player 2" extraStyles="ml-5" />
         <div className="flex flex-col justify-between h-[100%]">
           <PlayerModal playerNr="Player 3" extraStyles="mt-5" />
+          <div className="text-black border-2 border-black bg-white text-6xl p-4">Player 1 Turn
+            <div className="flex justify-center gap-10 mt-10 mb-8">
+              <SpinWheel/>
+              <SpinWheel/>
+            </div>
+          </div>
+          
           <PlayerModal playerNr="Player 1" extraStyles="mb-5" />
         </div>
         <PlayerModal playerNr="Player 4" extraStyles="mr-5" />

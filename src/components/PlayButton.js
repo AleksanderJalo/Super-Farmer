@@ -4,7 +4,7 @@ const Button = (props) => {
   return (
     <div
       onClick={props.onClick}
-      className="font-plaguard flex shadow-2xl border-4 transition ease-in-out duration-400  border-black text-white group z-20"
+      className="font-plaguard cursor-pointer flex shadow-2xl border-4 transition ease-in-out duration-400  border-black text-white group z-20 hover:-translate-y-1 duration-300"
     >
       <div className="bg-indigo-800 border-r-4 border-black group-hover:bg-indigo-900 p-1 px-2">
         <PlaySvg />
