@@ -17,9 +17,9 @@ const GameplayPage = () => {
           <PlayerModal playerNr="Player 3" extraStyles="mt-5" />
           <div className="text-black border-4 border-black bg-white text-6xl ml-4">
             <div className="w-full bg-green-600 px-4 py-3 text-white border-b-4 border-black">Player 1 Turn</div>
-            <div className="flex justify-center gap-10 mt-10 mb-8 p-4">
-              <SpinWheel />
-              <SpinWheel />
+            <div className="flex justify-center gap-10 mt-10 mb-4 p-4">
+              <SpinWheel isLeft={ true } />
+              <SpinWheel isLeft={ false }/>
             </div>
           </div>
 
