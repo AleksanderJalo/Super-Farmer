@@ -104,7 +104,7 @@ const SpinWheel = (props) => {
       >
         {animal}
       </div>
-      <SpinButton onClick={spinHandler} />
+      <SpinButton onClick={spinHandler} isLeft={ props.isLeft } didLeftSpin={didLeftSpin} didRightSpin={didRightSpin} />
     </div>
   );
 };
