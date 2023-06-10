@@ -8,7 +8,10 @@ import { ReactComponent as Sheep } from "../images/sheep.svg";
 import { ReactComponent as Wolf } from "../images/wolf.svg";
 import { ReactComponent as QuestionMark } from "../images/questionSpin.svg";
 import SpinButton from "./SpinButton";
+import { usePlayer1Store } from "../stores/player1";
+
 const SpinWheel = (props) => {
+  const { setLeftSpin, setRightSpin } = usePlayer1Store();
   const [isSpinning, setIsSpinning] = useState(false);
   const [spinTime, setSpinTime] = useState(-10001);
   const [didLeftSpin, setDidLeftSpin] = useState(false);
@@ -17,10 +20,8 @@ const SpinWheel = (props) => {
   useEffect(() => {
     const animals = ["r", "s", "p", "h", "w", "c", "f"];
     let interval;
-    const rollAnimal = () => {
-      const animalRolled = animals[Math.floor(Math.random() * animals.length)];
-
-      switch (animalRolled) {
+    const stringToAnimal = (string) => {
+      switch (string) {
         case "r":
           return <Rabbit />;
         case "s":
@@ -39,6 +40,10 @@ const SpinWheel = (props) => {
           return;
       }
     };
+    const rollAnimal = () => {
+      const animalRolled = animals[Math.floor(Math.random() * animals.length)];
+      return stringToAnimal(animalRolled);
+    };
 
     const changeAnimal = () => {
       interval = setInterval(() => {
@@ -51,48 +56,53 @@ const SpinWheel = (props) => {
       changeAnimal();
       return () => clearInterval(interval);
     }
+
     if (-1000 < spinTime && spinTime <= 0) {
       setSpinTime(-10001);
 
       if (props.isLeft === true) {
         const leftAnimals = [
-          <Rabbit />,
-          <Rabbit />,
-          <Rabbit />,
-          <Rabbit />,
-          <Rabbit />,
-          <Rabbit />,
-          <Sheep />,
-          <Sheep />,
-          <Sheep />,
-          <Pig />,
-          <Horse />,
-          <Wolf />,
+          "r",
+          "r",
+          "r",
+          "r",
+          "r",
+          "r",
+          "s",
+          "s",
+          "s",
+          "p",
+          "h",
+          "w",
         ];
-        setAnimal(leftAnimals[Math.floor(Math.random() * 12)]);
+        const rolledAnimal = leftAnimals[Math.floor(Math.random() * 12)];
+        setAnimal(stringToAnimal(rolledAnimal))
         setDidLeftSpin(true);
+        setLeftSpin(rolledAnimal);
       } else {
         const rightAnimals = [
-          <Rabbit />,
-          <Rabbit />,
-          <Rabbit />,
-          <Rabbit />,
-          <Rabbit />,
-          <Rabbit />,
-          <Sheep />,
-          <Sheep />,
-          <Pig />,
-          <Pig />,
-          <Cow />,
-          <Fox />,
+          "r",
+          "r",
+          "r",
+          "r",
+          "r",
+          "r",
+          "s",
+          "s",
+          "p",
+          "p",
+          "c",
+          "f",
         ];
-        setAnimal(rightAnimals[Math.floor(Math.random() * 12)]);
+        const rolledAnimal = rightAnimals[Math.floor(Math.random() * 12)];
+        setAnimal(stringToAnimal(rolledAnimal));
         setDidRightSpin(true);
+        setRightSpin(rolledAnimal);
       }
     }
   }, [setIsSpinning, isSpinning, spinTime, props.isLeft]);
 
-  const [animal, setAnimal] = useState(<QuestionMark/>);
+  const [animal, setAnimal] = useState(<QuestionMark />);
   const spinHandler = () => {
     setSpinTime(1);
   };
@@ -105,7 +115,12 @@ const SpinWheel = (props) => {
       >
         {animal}
       </div>
-      <SpinButton onClick={spinHandler} isLeft={ props.isLeft } didLeftSpin={didLeftSpin} didRightSpin={didRightSpin} />
+      <SpinButton
+        onClick={spinHandler}
+        isLeft={props.isLeft}
+        didLeftSpin={didLeftSpin}
+        didRightSpin={didRightSpin}
+      />
     </div>
   );
 };
