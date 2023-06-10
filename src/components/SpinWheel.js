@@ -1,14 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { ReactComponent as Cow } from "../images/cow.svg";
-import { ReactComponent as Fox } from "../images/fox.svg";
-import { ReactComponent as Horse } from "../images/horse.svg";
-import { ReactComponent as Pig } from "../images/pig.svg";
-import { ReactComponent as Rabbit } from "../images/rabbit.svg";
-import { ReactComponent as Sheep } from "../images/sheep.svg";
-import { ReactComponent as Wolf } from "../images/wolf.svg";
 import { ReactComponent as QuestionMark } from "../images/questionSpin.svg";
 import SpinButton from "./SpinButton";
 import { usePlayer1Store } from "../stores/player1";
+import stringToAnimal from "./Helpers/AnimalStringToObject";
 
 const SpinWheel = (props) => {
   const { setLeftSpin, setRightSpin } = usePlayer1Store();
@@ -20,26 +14,6 @@ const SpinWheel = (props) => {
   useEffect(() => {
     const animals = ["r", "s", "p", "h", "w", "c", "f"];
     let interval;
-    const stringToAnimal = (string) => {
-      switch (string) {
-        case "r":
-          return <Rabbit />;
-        case "s":
-          return <Sheep />;
-        case "p":
-          return <Pig />;
-        case "h":
-          return <Horse />;
-        case "w":
-          return <Wolf />;
-        case "c":
-          return <Cow />;
-        case "f":
-          return <Fox />;
-        default:
-          return;
-      }
-    };
     const rollAnimal = () => {
       const animalRolled = animals[Math.floor(Math.random() * animals.length)];
       return stringToAnimal(animalRolled);

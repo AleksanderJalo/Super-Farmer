@@ -1,8 +1,9 @@
 import { create } from "zustand";
 
 export const usePlayer1Store = create((set) => ({
-  turn: 1,
-  farm: [[], [], [], []],
+    turn: 0
+    ,
+  farm: [["r","r"], [], [], []],
   leftSpin: [null, null, null, null],
   rightSpin: [null, null, null, null],
   addAnimal: (animal) =>
@@ -32,4 +33,10 @@ export const usePlayer1Store = create((set) => ({
         rightSpin,
       };
     }),
+    nextTurn: () => set((state) => {
+        const newTurn = state.turn + 1;
+        return {
+            turn: newTurn > 4 ? 1 : newTurn
+        }
+  })
 }));
