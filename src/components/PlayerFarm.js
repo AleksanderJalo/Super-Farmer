@@ -7,7 +7,7 @@ const PlayerFarm = (props) => {
     const { farm } = usePlayer1Store();
    
     return <div className="border-black border-2 border-dashed mx-5 text-xl px-2 pt-4 pb-4">
-        {(farm[props.playerNr-1].length > 0) ? <div className="flex">{farm[props.playerNr-1].map(animal => <div>{stringToAnimal(animal, 30)}</div>)}</div> : <div>Empty</div>}
+        {(farm[props.playerNr-1].length > 0) ? <div className="flex gap-2">{farm[props.playerNr-1].map(animal => <div key={Math.random()}>{stringToAnimal(animal, 30)}</div>)}</div> : <div>Empty</div>}
     </div>
 };
 

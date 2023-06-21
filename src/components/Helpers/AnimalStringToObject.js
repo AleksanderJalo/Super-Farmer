@@ -10,17 +10,17 @@ const stringToAnimal = (string, height) => {
     case "r":
           return <Rabbit className={`h-[${height}px] w-[${height}px]`} />;
     case "s":
-      return <Sheep />;
+      return <Sheep className={`h-[${height}px] w-[${height}px]`}/>;
     case "p":
-      return <Pig />;
+      return <Pig className={`h-[${height}px] w-[${height}px]`}/>;
     case "h":
-      return <Horse />;
+      return <Horse className={`h-[${height}px] w-[${height}px]`}/>;
     case "w":
-      return <Wolf />;
+      return <Wolf className={`h-[${height}px] w-[${height}px]`}/>;
     case "c":
-      return <Cow />;
+      return <Cow className={`h-[${height}px] w-[${height}px]`}/>;
     case "f":
-      return <Fox />;
+      return <Fox className={`h-[${height}px] w-[${height}px]`}/>;
     default:
       return;
   }
