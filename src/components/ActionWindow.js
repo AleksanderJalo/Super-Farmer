@@ -14,25 +14,20 @@ const ActionWindow = (props) => {
     nextTurn,
   } = usePlayer1Store();
   const [phase, setPhase] = useState("trade");
-  const [afterSpin, setAfterSpin] = useState(false);
+
   const [win, setWin] = useState(null);
 
   const phaseHandler = () => {
    setPhase("roll")
   };
   const cleanup = () => {
-    setLeftSpin(null);
-    setRightSpin(null);
     setWin(null);
     setPhase("trade");
     nextTurn();
   };
 
   useEffect(() => {
-    console.log(win);
-    console.log(afterSpin);
-    console.log(leftSpin[turn]);
-    console.log(rightSpin[turn]);
+    console.log(phase)
     if (leftSpin[turn] !== null && rightSpin[turn] !== null) {
       setTimeout(() => {
         setPhase("end");
@@ -40,9 +35,9 @@ const ActionWindow = (props) => {
       if (leftSpin[turn] === rightSpin[turn]) {
         addAnimal(leftSpin[turn]);
         setWin(leftSpin[turn]);
-        setLeftSpin(null);
-        setRightSpin(null);
       }
+      setLeftSpin(null);
+        setRightSpin(null);
     }
   });
   return (
