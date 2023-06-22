@@ -16,7 +16,7 @@ const ActionWindow = (props) => {
     }
   });
   return (
-    <div className="text-black border-4 border-black bg-white text-6xl ml-4">
+    <div className="text-black border-4 border-black bg-white text-6xl ">
       <div className="w-full bg-green-600 px-4 py-3 text-white border-b-4 border-black">
         Player {turn % 4 + 1} Turn
       </div>

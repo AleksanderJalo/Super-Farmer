@@ -9,45 +9,45 @@ import { ReactComponent as BigDog } from "../images/bigDog.svg";
 
 const TradingSheet = () => {
   return (
-    <div className="absolute top-5 left-[450px] text-5xl bg-white flex flex-col border-black border-4">
+    <div className="absolute top-5 left-[480px] text-4xl bg-white flex flex-col border-black border-4">
       <div className="bg-[#e2525c] px-4 py-4 border-b-4 border-black text-white whitespace-nowrap">
         Cheat Sheet
       </div>
       <div className="p-2 flex gap-2 justify-center border-b-4 border-black">
         6 <span className="text-3xl mt-1">x</span>
-        <Rabbit className="h-[45px] w-[45px] " />
+        <Rabbit className="h-[35px] w-[35px] " />
         = 1<span className="text-3xl mt-1">x</span>
-        <Sheep className="h-[50px] w-[50px]" />
+        <Sheep className="h-[35px] w-[35px]" />
       </div>
       <div className="p-2 flex gap-2 justify-center border-b-4 border-black">
         1<span className="text-3xl mt-1">x</span>
-        <Pig className="h-[45px] w-[45px] " />= 2
+        <Pig className="h-[35px] w-[35px] " />= 2
         <span className="text-3xl mt-1">x</span>
-        <Sheep className="h-[50px] w-[50px]" />
+        <Sheep className="h-[35px] w-[35px]" />
       </div>
       <div className="p-2 flex gap-2 justify-center border-b-4 border-black">
         1<span className="text-3xl mt-1">x</span>
-        <Cow className="h-[45px] w-[45px] " />= 3
+        <Cow className="h-[35px] w-[35px] " />= 3
         <span className="text-3xl mt-1">x</span>
-        <Pig className="h-[50px] w-[50px]" />
+        <Pig className="h-[35px] w-[35px]" />
       </div>
       <div className="p-2 flex gap-2 justify-center border-b-4 border-black">
         1<span className="text-3xl mt-1">x</span>
-        <Horse className="h-[45px] w-[45px] " />= 2
+        <Horse className="h-[35px] w-[35px] " />= 2
         <span className="text-3xl mt-1">x</span>
-        <Cow className="h-[50px] w-[50px]" />
+        <Cow className="h-[35px] w-[35px]" />
       </div>
       <div className="p-2 flex gap-2 justify-center border-b-4 border-black">
         1<span className="text-3xl mt-1">x</span>
-        <SmallDog className="h-[45px] w-[45px] " />= 1
+        <SmallDog className="h-[35px] w-[35px] " />= 1
         <span className="text-3xl mt-1">x</span>
-        <Sheep className="h-[50px] w-[50px]" />
+        <Sheep className="h-[35px] w-[35px]" />
       </div>
       <div className="p-2 flex gap-2 justify-center">
         1<span className="text-3xl mt-1">x</span>
-        <BigDog className="h-[45px] w-[45px] " />= 1
+        <BigDog className="h-[35px] w-[35px] " />= 1
         <span className="text-3xl mt-1">x</span>
-        <Cow className="h-[50px] w-[50px]" />
+        <Cow className="h-[35px] w-[35px]" />
       </div>
     </div>
   );
