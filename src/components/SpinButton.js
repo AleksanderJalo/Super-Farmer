@@ -11,7 +11,7 @@ const SpinButton = (props) => {
   };
   return (
     <motion.div
-      className={`cursor-pointer py-2 px-4 mt-3 mb-2 flex border-4 border-black rounded-lg ${
+      className={`cursor-pointer py-2  mt-3 mb-2 flex border-4 border-black rounded-lg justify-center ${
         props.isLeft && props.didLeftSpin
           ? "bg-slate-600 hover:bg-slate-600"
           : "bg-red-600 hover:bg-red-700"
@@ -25,7 +25,7 @@ const SpinButton = (props) => {
       transition={{ duration: 0.2 }}
       whileHover={{ scale: isClicked ? 1 : 1.1 }}
     >
-      <div className="text-white">SPIN</div>
+      <div className="text-white ">SPIN</div>
     </motion.div>
   );
 };

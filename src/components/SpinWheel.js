@@ -16,7 +16,7 @@ const SpinWheel = (props) => {
     let interval;
     const rollAnimal = () => {
       const animalRolled = animals[Math.floor(Math.random() * animals.length)];
-      return stringToAnimal(animalRolled);
+      return stringToAnimal(animalRolled, 100);
     };
 
     const changeAnimal = () => {
@@ -50,7 +50,7 @@ const SpinWheel = (props) => {
           "w",
         ];
         const rolledAnimal = leftAnimals[Math.floor(Math.random() * 12)];
-        setAnimal(stringToAnimal(rolledAnimal))
+        setAnimal(stringToAnimal(rolledAnimal, 100));
         setDidLeftSpin(true);
         setLeftSpin(rolledAnimal);
       } else {
@@ -69,7 +69,7 @@ const SpinWheel = (props) => {
           "f",
         ];
         const rolledAnimal = rightAnimals[Math.floor(Math.random() * 12)];
-        setAnimal(stringToAnimal(rolledAnimal));
+        setAnimal(stringToAnimal(rolledAnimal, 100));
         setDidRightSpin(true);
         setRightSpin(rolledAnimal);
       }

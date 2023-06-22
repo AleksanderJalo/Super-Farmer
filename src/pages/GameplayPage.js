@@ -3,7 +3,6 @@ import logo from "../images/logo.png";
 import PlayerModal from "../components/PlayerModal";
 import ActionWindow from "../components/ActionWindow";
 import TradingSheet from "../components/TradingSheet";
-import { usePlayer1Store } from "../stores/player1";
 
 const GameplayPage = () => {
   return (
@@ -27,7 +26,7 @@ const GameplayPage = () => {
 
           <PlayerModal playerNr={1} extraStyles="mb-5" />
         </div>
-        <PlayerModal playerNr={ 4} extraStyles="mr-5 w-1/6" />
+        <PlayerModal playerNr={4} extraStyles="mr-5 w-1/6" />
       </div>
     </div>
   );

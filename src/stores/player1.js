@@ -2,7 +2,7 @@ import { create } from "zustand";
 
 export const usePlayer1Store = create((set) => ({
   turn: 0,
-  farm: [["r","r","r","r","r","r","r", "s","s", "p"], [], [], []],
+  farm: [["r","r","r","r","r","r","r", "s","s", "p", "c","c","h", "sd", "bd"], [], [], []],
   canTrade: [
     [
       false,
@@ -106,11 +106,14 @@ export const usePlayer1Store = create((set) => ({
       const pigs = animals.filter((animal) => animal === "p").length;
       const cows = animals.filter((animal) => animal === "c").length;
       const horses = animals.filter((animal) => animal === "h").length;
+      const smallDog = animals.filter((animal) => animal === "sd").length;
+      const bigDog = animals.filter((animal) => animal === "bd").length;
       if (rabbits > 5) {
         trades[0] = true;
       }
       if (sheeps > 0) {
         trades[1] = true;
+        trades[9] = true;
         if (sheeps > 1) {
           trades[3] = true;
         }
@@ -123,12 +126,19 @@ export const usePlayer1Store = create((set) => ({
       }
       if (cows > 0) {
         trades[4] = true;
+        trades[11] = true;
         if (cows > 1) {
           trades[7] = true;
         }
       }
       if (horses > 0) {
         trades[6] = true;
+      }
+      if (smallDog > 0) {
+        trades[8] = true;
+      }
+      if (bigDog > 0) {
+        trades[10] = true;
       }
 
       const newCanTrade = state.canTrade;
