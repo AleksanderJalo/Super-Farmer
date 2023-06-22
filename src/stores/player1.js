@@ -74,7 +74,8 @@ export const usePlayer1Store = create((set) => ({
     }),
   setLeftSpin: (animal) =>
     set((state) => {
-      const { leftSpin } = state;
+      const { leftSpin
+      } = state;
       leftSpin[state.turn] = animal;
       return {
         ...state,
@@ -92,9 +93,9 @@ export const usePlayer1Store = create((set) => ({
     }),
   nextTurn: () =>
     set((state) => {
-      const newTurn = state.turn + 1;
+      const newTurn =  state.turn + 1 > 3 ? 0 : state.turn + 1;
       return {
-        turn: newTurn > 4 ? 1 : newTurn,
+        turn: newTurn,
       };
     }),
   checkTrades: () =>
