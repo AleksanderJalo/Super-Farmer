@@ -9,12 +9,17 @@ import { ReactComponent as BigDog } from "../../images/bigDog.svg";
 import { ReactComponent as Horse } from "../../images/horse.svg";
 import TradeButton from "../TradeButton";
 
-const TradesList = () => {
+const TradesList = (props) => {
   const { canTrade, turn } = usePlayer1Store();
   const tradesArray = canTrade[turn];
   const [trades, setTrades] = useState([]);
   useEffect(() => {
     setTrades(tradesToList(tradesArray));
+    console.log(tradesArray.includes(true))
+    if (!tradesArray.includes(true)) { 
+      props.phaseHandler();
+    }
+    
   }, [tradesArray, setTrades]);
 
   return <div className="flex flex-col items-center text-3xl">{trades}</div>;

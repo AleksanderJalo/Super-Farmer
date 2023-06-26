@@ -6,12 +6,23 @@ import stringToAnimal from "./Helpers/AnimalStringToObject";
 
 const SpinWheel = (props) => {
   const { setLeftSpin, setRightSpin } = usePlayer1Store();
+  const [aiStartSpin, setAiStartSpin] = useState(false);
   const [isSpinning, setIsSpinning] = useState(false);
   const [spinTime, setSpinTime] = useState(-10001);
   const [didLeftSpin, setDidLeftSpin] = useState(false);
   const [didRightSpin, setDidRightSpin] = useState(false);
 
   useEffect(() => {
+    if (props.isHuman === false && !aiStartSpin) {
+      setAiStartSpin(true);
+
+      if (props.isLeft) {
+        spinHandler();
+      } else {
+        setTimeout(() => { spinHandler() }, 200);
+      }
+      
+    }
     const animals = ["r", "s", "p", "h", "w", "c", "f"];
     let interval;
     const rollAnimal = () => {
@@ -89,12 +100,12 @@ const SpinWheel = (props) => {
       >
         {animal}
       </div>
-      <SpinButton
-        onClick={spinHandler}
+      {props.isHuman && <SpinButton
+        onClick={props.isHuman === true ? spinHandler : () => { }}
         isLeft={props.isLeft}
         didLeftSpin={didLeftSpin}
         didRightSpin={didRightSpin}
-      />
+      />}
     </div>
   );
 };
