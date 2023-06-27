@@ -4,7 +4,7 @@ import { usePlayer1Store } from "../stores/player1";
 import TradeAction from "./Actions/TradeAction";
 import stringToAnimal from "./Helpers/AnimalStringToObject";
 import AiTurn from "./AiTurn";
-const ActionWindow = (props) => {
+const ActionWindow = () => {
   const {
     isHuman,
     leftSpin,
@@ -12,7 +12,6 @@ const ActionWindow = (props) => {
     addAnimal,
     setLeftSpin,
     setRightSpin,
-    checkTrades,
     turn,
     nextTurn,
   } = usePlayer1Store();

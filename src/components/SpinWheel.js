@@ -19,9 +19,10 @@ const SpinWheel = (props) => {
       if (props.isLeft) {
         spinHandler();
       } else {
-        setTimeout(() => { spinHandler() }, 200);
+        setTimeout(() => {
+          spinHandler();
+        }, 200);
       }
-      
     }
     const animals = ["r", "s", "p", "h", "w", "c", "f"];
     let interval;
@@ -64,6 +65,9 @@ const SpinWheel = (props) => {
         setAnimal(stringToAnimal(rolledAnimal, 100));
         setDidLeftSpin(true);
         setLeftSpin(rolledAnimal);
+        if (!props.isHuman) {
+          props.afterSpinHandler(true, rolledAnimal);
+        }
       } else {
         const rightAnimals = [
           "r",
@@ -81,8 +85,13 @@ const SpinWheel = (props) => {
         ];
         const rolledAnimal = rightAnimals[Math.floor(Math.random() * 12)];
         setAnimal(stringToAnimal(rolledAnimal, 100));
+
         setDidRightSpin(true);
+
         setRightSpin(rolledAnimal);
+        if (!props.isHuman) {
+          props.afterSpinHandler(false, rolledAnimal);
+        }
       }
     }
   }, [setIsSpinning, isSpinning, spinTime, props.isLeft]);
@@ -100,12 +109,14 @@ const SpinWheel = (props) => {
       >
         {animal}
       </div>
-      {props.isHuman && <SpinButton
-        onClick={props.isHuman === true ? spinHandler : () => { }}
-        isLeft={props.isLeft}
-        didLeftSpin={didLeftSpin}
-        didRightSpin={didRightSpin}
-      />}
+      {props.isHuman && (
+        <SpinButton
+          onClick={props.isHuman === true ? spinHandler : () => {}}
+          isLeft={props.isLeft}
+          didLeftSpin={didLeftSpin}
+          didRightSpin={didRightSpin}
+        />
+      )}
     </div>
   );
 };
