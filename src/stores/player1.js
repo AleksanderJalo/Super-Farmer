@@ -2,8 +2,8 @@ import { create } from "zustand";
 
 export const usePlayer1Store = create((set) => ({
   turn: 0,
-  farm: [["r", "r", "r", "r", "r", "r", "r", "s", "s", "p", "c", "c", "h", "sd", "bd"], [], [], []],
-  isHuman: [true, false, false, false],
+  farm: [[], [], [], []],
+  isHuman: [true, false, false, true],
   canTrade: [
     [
       false,
@@ -97,6 +97,8 @@ export const usePlayer1Store = create((set) => ({
       const newTurn =  state.turn + 1 > 3 ? 0 : state.turn + 1;
       return {
         turn: newTurn,
+        leftSpin: [null, null, null, null],
+        rightSpin: [null, null, null, null]
       };
     }),
   checkTrades: () =>

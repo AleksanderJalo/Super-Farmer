@@ -5,6 +5,12 @@ import TradeAction from "./Actions/TradeAction";
 import stringToAnimal from "./Helpers/AnimalStringToObject";
 import AiTurn from "./AiTurn";
 const ActionWindow = () => {
+  const cleanupAi = () => {
+    setWin(null);
+    setPhase("trade");
+    setLeftSpin(null);
+    setRightSpin(null);
+  }
   const {
     isHuman,
     leftSpin,
@@ -25,6 +31,8 @@ const ActionWindow = () => {
   const cleanup = () => {
     setWin(null);
     setPhase("trade");
+    setLeftSpin(null);
+    setRightSpin(null);
     nextTurn();
   };
 
@@ -84,7 +92,7 @@ const ActionWindow = () => {
           </div>
         )}
       </div>}
-      {!isHuman[turn] && <AiTurn/> }
+      {!isHuman[turn] && <AiTurn cleanup={cleanupAi} /> }
     </div>
   );
 };
