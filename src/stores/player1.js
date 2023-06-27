@@ -2,8 +2,8 @@ import { create } from "zustand";
 
 export const usePlayer1Store = create((set) => ({
   turn: 0,
-  farm: [[], [], [], []],
-  isHuman: [true, false, false, true],
+  farm: [[ ], [], [], []],
+  isHuman: [true, false, false, false],
   canTrade: [
     [
       false,

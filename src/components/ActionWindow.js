@@ -71,7 +71,7 @@ const ActionWindow = () => {
         {phase === "end" && win && (
           <div className="m-8 flex flex-col items-center">
             <div>Congratulations you won </div>
-            <div>{stringToAnimal(win, 100)}</div>
+            <div className="p-1 border-4 border-black bg-green-600">{stringToAnimal(win, 100)}</div>
             <div
               className="border-4 border-black rounded-lg p-2 bg-red-600 text-white hover:bg-red-500 cursor-pointer mt-6 "
               onClick={cleanup}

@@ -11,11 +11,9 @@ const AiTurn = (props) => {
   const [rightSpin, setRightSpin] = useState(null);
   const [startCleaning, setStartCleaning] = useState(false);
   const cleanup = () => {
-    setWin(null);
     setLeftSpin(null);
     setRightSpin(null);
     setPhase("trade");
-    console.log("fuck")
     nextTurn();
   }
   useEffect(() => {
@@ -29,11 +27,11 @@ const AiTurn = (props) => {
         setStartCleaning(false);
       }, 1000);
       setTimeout(() => {
-        
         setPhase("end");
       }, 4500);
     }
     if (phase === "end") {
+      setWin(null);
       if (leftSpin === rightSpin) {
         setWin(stringToAnimal(leftSpin));
       }
