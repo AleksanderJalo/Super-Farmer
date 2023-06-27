@@ -9,7 +9,7 @@ import { ReactComponent as BigDog } from "../images/bigDog.svg";
 
 const TradingSheet = () => {
   return (
-    <div className="absolute top-5 left-[580px] text-4xl bg-white flex flex-col border-black border-4">
+    <div className="absolute top-5 left-[520px] text-4xl bg-white flex flex-col border-black border-4">
       <div className="bg-[#e2525c] px-4 py-4 border-b-4 border-black text-white whitespace-nowrap">
         Cheat Sheet
       </div>

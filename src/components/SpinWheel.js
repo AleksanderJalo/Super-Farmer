@@ -103,7 +103,7 @@ const SpinWheel = (props) => {
   return (
     <div className="flex flex-col">
       <div
-        className={`h-[140px] w-[140px] ml-2 border-4 border-black pl-[15px] pt-4 ${
+        className={`h-[140px] w-[140px] ml-2 border-4 border-black pl-[15px] pt-3 ${
           props.isLeft && didLeftSpin ? "bg-green-700" : ""
         } ${!props.isLeft && didRightSpin ? "bg-green-700" : ""}`}
       >

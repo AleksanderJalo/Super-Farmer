@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { usePlayer1Store } from "../stores/player1";
 import SpinWheel from "./SpinWheel";
 import stringToAnimal from "./Helpers/AnimalStringToObject";
+import AiTrade from "./Helpers/AiTrade";
 const AiTurn = (props) => {
   const { canTrade, turn, checkTrades, nextTurn } = usePlayer1Store();
   const [phase, setPhase] = useState("trade");
@@ -15,17 +16,15 @@ const AiTurn = (props) => {
     setRightSpin(null);
     setPhase("trade");
     nextTurn();
-  }
+  };
   useEffect(() => {
     checkTrades();
     if (canTrade[turn].includes(true)) {
       //Here add ai trade
     } else if (phase === "trade") {
-      setText(`Player ${turn + 1} did not trade.`);
-      setTimeout(() => {
-        setPhase("roll");
-        setStartCleaning(false);
-      }, 1000);
+      setPhase("roll");
+      setStartCleaning(false);
+
       setTimeout(() => {
         setPhase("end");
       }, 4500);
@@ -42,7 +41,6 @@ const AiTurn = (props) => {
           props.cleanup();
         }, 1000);
       }
-      
     }
   }, [setPhase, phase, turn, canTrade, checkTrades, setWin]);
 
@@ -56,11 +54,11 @@ const AiTurn = (props) => {
 
   return (
     <div className="flex flex-col bg-white">
-      <div className="w-full text-4xl bg-green-600 px-4 py-3 text-white border-b-0 border-black border-4">
+      <div className="w-[500px] text-4xl bg-green-600  py-3 text-white border-b-0 border-black border-4">
         Player {turn + 1} Turn
       </div>
       {phase === "trade" && (
-        <div className="text-2xl py-6 border-4 border-black">{text}</div>
+        <div className="text-3xl py-6 border-4 border-black"><AiTrade/></div>
       )}
       {phase === "roll" && (
         <div className="text-4xl border-4 border-black">

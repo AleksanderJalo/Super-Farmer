@@ -13,9 +13,9 @@ const GameplayPage = () => {
         alt="logo"
       />
 
-      <div className="flex justify-between  items-center h-[90%] w-[90%] bg-white wood border-8 border-black z-20 font-skranji rounded">
+      <div className="flex justify-between  items-center h-[95%] w-[95%] bg-white wood border-8 border-black z-20 font-skranji rounded">
         <PlayerModal playerNr={2} extraStyles="ml-5 w-1/6" />
-        <div className="flex flex-col justify-between h-[100%] relative">
+        <div className="flex flex-col items-center justify-between  h-[100%] relative">
           <div className="mt-5">
             <PlayerModal playerNr={3} />
           </div>

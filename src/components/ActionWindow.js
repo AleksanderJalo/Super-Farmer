@@ -51,8 +51,8 @@ const ActionWindow = () => {
   });
   return (
     <div>
-      {isHuman[turn] && <div className="text-black border-4 border-black bg-white text-4xl ">
-        <div className="w-full bg-green-600 px-4 py-3 text-white border-b-0 border-black">
+      {isHuman[turn] && <div className="text-black border-4 w-[450px] border-black bg-white text-3xl ">
+        <div className="w-full bg-green-600 px-4 py-3 text-white border-b-4 border-black">
           {phase === "trade" && (
             <div> Player {(turn % 4) + 1} : Trade Phase</div>
           )}
@@ -62,7 +62,7 @@ const ActionWindow = () => {
         </div>
         {phase === "trade" && <TradeAction phaseHandler={phaseHandler} />}
         {phase === "roll" && (
-          <div className="flex justify-center gap-10 mt-4 mb-4 p-4">
+          <div className="flex justify-center gap-10 mt-4 mb-2 p-4">
             <SpinWheel isHuman={true} isLeft={true} />
             <SpinWheel isHuman={true} isLeft={false} />
           </div>
@@ -71,7 +71,7 @@ const ActionWindow = () => {
         {phase === "end" && win && (
           <div className="m-8 flex flex-col items-center">
             <div>Congratulations you won </div>
-            <div className="p-1 border-4 border-black bg-green-600">{stringToAnimal(win, 100)}</div>
+            <div className="p-2 mt-2 border-4 border-black bg-green-600">{stringToAnimal(win, 100)}</div>
             <div
               className="border-4 border-black rounded-lg p-2 bg-red-600 text-white hover:bg-red-500 cursor-pointer mt-6 "
               onClick={cleanup}

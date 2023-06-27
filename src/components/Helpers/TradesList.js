@@ -15,7 +15,6 @@ const TradesList = (props) => {
   const [trades, setTrades] = useState([]);
   useEffect(() => {
     setTrades(tradesToList(tradesArray));
-    console.log(tradesArray.includes(true))
     if (!tradesArray.includes(true)) { 
       props.phaseHandler();
     }
