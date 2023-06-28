@@ -2,8 +2,38 @@ import { create } from "zustand";
 
 export const usePlayer1Store = create((set) => ({
   turn: 0,
-  farm: [["r"], ["sd","bd","h","h", "c", "c"], [], []],
+  farm: [
+    ["r"],
+    [
+      "sd",
+      "bd",
+      "r",
+      "r",
+      "r",
+      "r",
+      "r",
+      "r",
+      "r",
+      "s",
+      "s",
+      "s",
+      "c",
+      "p",
+      "p",
+      "p",
+    ],
+    ["c", "s"],
+    [],
+  ],
   isHuman: [true, false, false, false],
+  traded: [false, false, false, false],
+  setTraded: () => {
+    set((state) => {
+      const newTraded = state.traded;
+      newTraded[state.turn] = !newTraded[state.turn];
+      return { traded: newTraded };
+    });
+  },
   canTrade: [
     [
       false,
@@ -151,8 +181,6 @@ export const usePlayer1Store = create((set) => ({
       };
     }),
   deleteAnimal: (animal, count) => {
-    console.log(animal)
-    console.log(count)
     set((state) => {
       const newArray = [...state.farm[state.turn]];
       let remainingCount = count;
@@ -171,16 +199,14 @@ export const usePlayer1Store = create((set) => ({
     });
   },
   addMultipleAnimals: (animal, count) => {
-    console.log(animal);
-    console.log(count)
     set((state) => {
       const newArray = state.farm[state.turn];
-      for (let i = 0; i < count; i++){
+      for (let i = 0; i < count; i++) {
         newArray.push(animal);
       }
       const newFarm = state.farm;
       newFarm[state.turn] = newArray;
       return { farm: newFarm };
-    })
-  }
+    });
+  },
 }));

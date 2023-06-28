@@ -2,33 +2,69 @@ import React, { useEffect, useState } from "react";
 import { usePlayer1Store } from "../stores/player1";
 import SpinWheel from "./SpinWheel";
 import stringToAnimal from "./Helpers/AnimalStringToObject";
-import AiTrade from "./Helpers/AiTrade";
+import { whatTrade, changeText } from "./Helpers/AiTrade";
 const AiTurn = (props) => {
-  const { canTrade, turn, checkTrades, nextTurn } = usePlayer1Store();
+  const propsCleanup = props.cleanup;
+  const {
+    traded,
+    setTraded,
+    turn,
+    checkTrades,
+    nextTurn,
+    farm,
+    addMultipleAnimals,
+    deleteAnimal,
+  } = usePlayer1Store();
   const [phase, setPhase] = useState("trade");
-  const [text, setText] = useState("");
   const [win, setWin] = useState(null);
   const [leftSpin, setLeftSpin] = useState(null);
   const [rightSpin, setRightSpin] = useState(null);
   const [startCleaning, setStartCleaning] = useState(false);
+  const [tradeText, setTradeText] = useState("");
   const cleanup = () => {
     setLeftSpin(null);
     setRightSpin(null);
     setPhase("trade");
+    setTraded();
     nextTurn();
   };
-  useEffect(() => {
-    checkTrades();
-    if (canTrade[turn].includes(true)) {
-      //Here add ai trade
-    } else if (phase === "trade") {
-      setPhase("roll");
-      setStartCleaning(false);
 
+  useEffect(() => {
+    if (phase === "trade" && !traded[turn]) {
+      setTraded();
+      setPhase("preroll");
+      checkTrades();
+      if (whatTrade(farm[turn])) {
+        console.log(whatTrade(farm[turn]));
+        console.log(phase);
+        const tradeResult = whatTrade(farm[turn]);
+        setStartCleaning(false);
+        deleteAnimal(tradeResult[0], tradeResult[2]);
+        addMultipleAnimals(tradeResult[1], tradeResult[3]);
+        setTradeText(changeText(
+          tradeResult[0],
+          tradeResult[1],
+          tradeResult[2],
+          tradeResult[3],
+          turn
+        ))
+      } else {
+        setPhase("preroll");
+        setTradeText("No trades");
+        setStartCleaning(false);
+      }
+    }
+    if (phase === "preroll") {
+      setTimeout(() => {
+        setPhase("roll");
+      }, 1000);
+    }
+    if (phase === "roll") {
       setTimeout(() => {
         setPhase("end");
       }, 4500);
     }
+
     if (phase === "end") {
       setWin(null);
       if (leftSpin === rightSpin) {
@@ -38,11 +74,11 @@ const AiTurn = (props) => {
         setStartCleaning(true);
         setTimeout(() => {
           cleanup();
-          props.cleanup();
+          propsCleanup();
         }, 1000);
       }
     }
-  }, [setPhase, phase, turn, canTrade, checkTrades, setWin]);
+  }, [phase, turn, setWin, setStartCleaning]);
 
   const afterSpinHandler = (isLeft, animal) => {
     if (isLeft) {
@@ -57,8 +93,8 @@ const AiTurn = (props) => {
       <div className="w-[500px] text-4xl bg-green-600  py-3 text-white border-b-0 border-black border-4">
         Player {turn + 1} Turn
       </div>
-      {phase === "trade" && (
-        <div className="text-3xl py-6 border-4 border-black"><AiTrade/></div>
+      {phase === "preroll" && (
+        <div className="text-3xl py-6 border-4 border-black">{tradeText}</div>
       )}
       {phase === "roll" && (
         <div className="text-4xl border-4 border-black">
