@@ -2,7 +2,7 @@ import { create } from "zustand";
 
 export const usePlayer1Store = create((set) => ({
   turn: 0,
-  farm: [["r" ], ["bd", "sd","h","c", "p","p", "s", "s"], [], []],
+  farm: [["r"], ["sd","bd","h","h", "c", "c"], [], []],
   isHuman: [true, false, false, false],
   canTrade: [
     [
@@ -75,8 +75,7 @@ export const usePlayer1Store = create((set) => ({
     }),
   setLeftSpin: (animal) =>
     set((state) => {
-      const { leftSpin
-      } = state;
+      const { leftSpin } = state;
       leftSpin[state.turn] = animal;
       return {
         ...state,
@@ -94,11 +93,11 @@ export const usePlayer1Store = create((set) => ({
     }),
   nextTurn: () =>
     set((state) => {
-      const newTurn =  state.turn + 1 > 3 ? 0 : state.turn + 1;
+      const newTurn = state.turn + 1 > 3 ? 0 : state.turn + 1;
       return {
         turn: newTurn,
         leftSpin: [null, null, null, null],
-        rightSpin: [null, null, null, null]
+        rightSpin: [null, null, null, null],
       };
     }),
   checkTrades: () =>
@@ -148,8 +147,40 @@ export const usePlayer1Store = create((set) => ({
       const newCanTrade = state.canTrade;
       newCanTrade[state.turn] = trades;
       return {
-        
-        canTrade: newCanTrade
-      }
+        canTrade: newCanTrade,
+      };
     }),
+  deleteAnimal: (animal, count) => {
+    console.log(animal)
+    console.log(count)
+    set((state) => {
+      const newArray = [...state.farm[state.turn]];
+      let remainingCount = count;
+      for (let i = newArray.length - 1; i >= 0; i--) {
+        if (newArray[i] === animal) {
+          newArray.splice(i, 1);
+          remainingCount--;
+        }
+        if (remainingCount === 0) {
+          break;
+        }
+      }
+      const newFarm = state.farm;
+      newFarm[state.turn] = newArray;
+      return { farm: newFarm };
+    });
+  },
+  addMultipleAnimals: (animal, count) => {
+    console.log(animal);
+    console.log(count)
+    set((state) => {
+      const newArray = state.farm[state.turn];
+      for (let i = 0; i < count; i++){
+        newArray.push(animal);
+      }
+      const newFarm = state.farm;
+      newFarm[state.turn] = newArray;
+      return { farm: newFarm };
+    })
+  }
 }));
