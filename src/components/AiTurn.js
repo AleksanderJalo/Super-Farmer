@@ -35,19 +35,19 @@ const AiTurn = (props) => {
       setPhase("preroll");
       checkTrades();
       if (whatTrade(farm[turn])) {
-        console.log(whatTrade(farm[turn]));
-        console.log(phase);
         const tradeResult = whatTrade(farm[turn]);
         setStartCleaning(false);
         deleteAnimal(tradeResult[0], tradeResult[2]);
         addMultipleAnimals(tradeResult[1], tradeResult[3]);
-        setTradeText(changeText(
-          tradeResult[0],
-          tradeResult[1],
-          tradeResult[2],
-          tradeResult[3],
-          turn
-        ))
+        setTradeText(
+          changeText(
+            tradeResult[0],
+            tradeResult[1],
+            tradeResult[2],
+            tradeResult[3],
+            turn
+          )
+        );
       } else {
         setPhase("preroll");
         setTradeText("No trades");
@@ -67,9 +67,35 @@ const AiTurn = (props) => {
 
     if (phase === "end") {
       setWin(null);
+      if (rightSpin === "f") {
+        if (farm[turn].includes("sd")) {
+          deleteAnimal("sd", 1);
+        } else {
+          if (farm[turn].filter((x) => x === "r").length > 0) {
+            deleteAnimal("r", farm[turn].filter((x) => x === "r").length - 1);
+          }
+        }
+      }
+      if (leftSpin === "w") {
+        if (farm[turn].includes("bd")) {
+          deleteAnimal("bd", 1);
+        } else {
+          if (farm[turn].filter((x) => x === "c").length >= 0) {
+            deleteAnimal("c", farm[turn].filter((x) => x === "c").length);
+          }
+          if (farm[turn].filter((x) => x === "s").length >= 0) {
+            deleteAnimal("s", farm[turn].filter((x) => x === "s").length);
+          }
+          if (farm[turn].filter((x) => x === "p").length >= 0) {
+            deleteAnimal("p", farm[turn].filter((x) => x === "p ").length);
+          }
+        }
+      }
       if (leftSpin === rightSpin) {
         setWin(stringToAnimal(leftSpin));
       }
+      setLeftSpin(null);
+      setRightSpin(null);
       if (!startCleaning) {
         setStartCleaning(true);
         setTimeout(() => {
