@@ -12,9 +12,13 @@
 
 @font-face {
   font-family: "Skranji";
-  src: url("../public/Skranji-Regular.ttf")
+  src: url("../public/Skranji-Regular.ttf");
 }
 
+@font-face {
+  font-family: "Caprasimo";
+  src: url("../public/Caprasimo.ttf");
+}
 .wood {
   background-image: url("./images/wood.jpg");
   background-size: cover;

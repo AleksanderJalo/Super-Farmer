@@ -1,9 +1,11 @@
 import React from "react";
 import { ReactComponent as QuestionMark } from "./question-mark.svg";
 
-const HtpButton = () => {
+const HtpButton = (props) => {
   return (
-    <div className="font-plaguard cursor-pointer flex shadow-2xl transition border-4  hover:-translate-y-1 duration-300 ease-in-out border-black text-white group z-20">
+    <div
+      onClick={props.onClick}
+      className="font-plaguard cursor-pointer flex shadow-2xl transition border-4  hover:-translate-y-1 duration-300 ease-in-out border-black text-white group z-20">
       <div className="bg-green-800 border-r-4 border-black group-hover:bg-green-900 p-1 px-2">
         <QuestionMark />
       </div>
