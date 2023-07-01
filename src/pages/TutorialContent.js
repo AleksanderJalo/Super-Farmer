@@ -25,24 +25,25 @@ const TutorialContent = (props) => {
           </div>
         )}
         {props.page === 2 && (
-          <div className="flex items-center ">
-            <div className="flex flex-col border-r-4 items-center border-black">
-              <div className="flex-wrap font-carrotfarm border-black border-b-8 border-r-8 py-6 text-white px-3 bg-yellow-600">
+          <div className="flex ">
+            <div className="flex flex-col border-r-8 items-center border-black w-1/2 ">
+              <div className="flex-wrap font-carrotfarm border-black border-b-8  py-6 text-white px-3 bg-yellow-600">
                 First thing you can do in your round is trade your animals for
                 others.
               </div>
-              <img className="py-6  w-1/4" src={cheatSheetPng} alt={"Trades"} />
+              <div className="bg-slate-300 w-full h-2/3 mb-0"><img className="py-6  w-1/4" src={cheatSheetPng} alt={"Trades"} /></div>
+              
             </div>
-            <div className="font-carrotfarm flex flex-col ">
-              <div className="flex justify-between px-12 ">
-                <div className="p-3 border-4 border-black bg-green-500  ">
+            <div className="font-carrotfarm flex flex-col  justify-between w-1/2">
+              <div className="flex justify-between px-12 pt-24 ">
+                <div className="p-3 border-8 border-black bg-green-500  ">
                   {stringToAnimal("r", 200)}
                 </div>
-                <div className="p-3 border-4 border-black bg-green-500 ">
+                <div className="p-3 border-8 border-black bg-green-500 ">
                   {stringToAnimal("r", 200)}
                 </div>
               </div>
-              <div className="px-3">
+              <div className="px-3 py-6 bg-slate-400 border-t-8 border-black ">
                 Then you roll two dices to see what animals you get.
               </div>
             </div>
