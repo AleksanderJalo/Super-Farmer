@@ -5,7 +5,6 @@ import OptionsButton from "../components/OptionsButton";
 import HtpButton from "../components/HtpButton";
 
 const StartingMenuPage = (props) => {
-  console.log(props.onHtpClick)
   return (
     <React.Fragment>
       <img src={logo} alt="logo" className="z-20 h-[700px] mt-12" />

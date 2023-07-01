@@ -19,6 +19,11 @@
   font-family: "Caprasimo";
   src: url("../public/Caprasimo.ttf");
 }
+
+@font-face {
+  font-family: "CarrotFarm";
+  src: url("../public/CarrotFarm.otf");
+}
 .wood {
   background-image: url("./images/wood.jpg");
   background-size: cover;

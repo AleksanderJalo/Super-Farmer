@@ -12,7 +12,6 @@ function App() {
   };
   const htpHandler = () => {
     setHowToPlay(true);
-    console.log("a");
   };
   return (
     <div>

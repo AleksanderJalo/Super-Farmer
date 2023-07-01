@@ -7,7 +7,8 @@ module.exports = {
         moonkids: ["Moonkids", "sans-serif"],
         plaguard: ["Plaguard", "sans-serif"],
         skranji: ["Skranji", "sans-serif"],
-        caprasimo: ["Caprasimo", "sans-serif"]
+        caprasimo: ["Caprasimo", "sans-serif"],
+        carrotfarm: ["CarrotFarm", "sans-serif"]
       }
     },
   },
