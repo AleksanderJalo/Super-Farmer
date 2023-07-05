@@ -5,7 +5,7 @@ const TutorialPage3 = () => {
     <div>
       <div className="px-3 py-8 text-5xl font-skranji bg-[#e2525c] text-white border-black border-b-8 h-1/5">
         {" "}
-        Count animals you have in farm and on dices.
+        AFTER ROLLING COUNT ANIMALS IN FARM AND ON DICES.
       </div>
       <div className="">
         <div>
@@ -36,13 +36,13 @@ const TutorialPage3 = () => {
           </div>
         </div>
         <div className="flex py-12 gap-12 justify-center">
-          <div className="flex px-12 items-center  gap-12 bg-amber-400 border-black border-8 py-3">
+          <div className="flex px-6 items-center  gap-3 bg-white border-black border-8 py-3">
             4 <div className="w-1/3">x</div> {stringToAnimal("r", 100)}
           </div>
-          <div className="flex px-12 items-center gap-12 bg-amber-400 border-black border-8 py-3">
+          <div className="flex px-6 items-center gap-3 bg-white border-black border-8 py-3">
             3 <div className="w-1/3">x</div> {stringToAnimal("s", 100)}
           </div>
-          <div className="flex px-12 items-center gap-12 bg-amber-400 border-black border-8 py-3">
+          <div className="flex px-6 items-center gap-3 bg-white border-black border-8 py-3">
             1 <div className="w-1/3">x</div> {stringToAnimal("p", 100)}
           </div>
         </div>

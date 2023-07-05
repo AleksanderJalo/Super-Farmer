@@ -6,7 +6,7 @@ const TutorialPage2 = () => {
     <div className="flex font-bold">
       <div className="flex flex-col border-r-8 border-black w-1/2   text-white">
         <div className="flex-wrap font-skranji   py-6  px-3 bg-[#e2525c] border-black border-b-8">
-          First thing you can do in your round is trade your animals for others.
+          FIRST THING YOU DO IN TURN IS TRADING ANIMALS.
         </div>
         <div className=" w-full h-full flex  justify-center ">
           <img className="py-6  w-1/4" src={cheatSheetPng} alt={"Trades"} />
@@ -22,7 +22,7 @@ const TutorialPage2 = () => {
           </div>
         </div>
         <div className="px-3 py-6 border-black border-t-8 bg-[#e2525c] text-white">
-          Then you roll two dices to see what animals you get.
+          THEN YOU ROLL THE DICES TO SEE WHAT ANIMALS YOU GET.
         </div>
       </div>
     </div>

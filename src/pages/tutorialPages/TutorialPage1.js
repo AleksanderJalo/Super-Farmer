@@ -4,9 +4,9 @@ const TutorialPage1 = () => {
   return (
     <div className="text-5xl leading-15 text-white font-skranji font-bold">
       <div className="bg-[#e2525c] py-6 border-black border-b-8">
-        You are a farmer and your goal is to collect animals.
+        YOU ARE A FARMER AND YOUR GOAL IS TO COLLECT ANIMALS.
         <div className="mt-6">
-          If you collect one of each kind you will win.
+          IF YOU COLLECT ONE OF EACH KIND YOU WIN!
         </div>
       </div>
 

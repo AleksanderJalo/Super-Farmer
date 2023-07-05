@@ -8,7 +8,7 @@ import { ReactComponent as Wolf } from "../../images/wolf.svg";
 import { ReactComponent as SmallDog } from "../../images/smallDog.svg";
 import { ReactComponent as BigDog } from "../../images/bigDog.svg";
 const stringToAnimal = (string, height) => {
-  const values = ["h-[80px]", "w-[80px]", "h-[60px]", "w-[60px] h-[30px] w-[30px] w-[200px] h-[200px] h-[200px] w-[200px]"];
+  const values = ["h-[80px]", "w-[80px]", "h-[60px]", "w-[60px] h-[30px] w-[30px] w-[200px] h-[200px] h-[200px] w-[200px] w-[100px] h-[100px]"];
   switch (string) {
     case "r":
       return <Rabbit className={`h-[${height}px] w-[${height}px]`} />;
