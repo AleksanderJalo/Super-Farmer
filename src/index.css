@@ -29,6 +29,11 @@
   background-size: cover;
 }
 
+.wood_darker {
+  background-image: url("./images/wood_darker.png");
+  background-size: cover;
+}
+
 .farm {
   background-image: url("./images/farmaBg.jpg");
   background-size: cover;

@@ -9,7 +9,7 @@ const HowToPlayPage = () => {
   }
   return (
     <div className="flex w-full h-full items-center justify-center ">
-      <div className="wood w-[90%] h-[90%] border-8 border-black rounded-lg relative">
+      <div className="w-[90%] h-[90%]   relative">
         <TutorialContent page={whichPage} />
         <NextPageButton onClick={ nextPageHandler } />
       </div>
