@@ -12,7 +12,6 @@ const TutorialContent = (props) => {
         {props.page === 2 && <TutorialPage2 />}
         {props.page === 3 && <TutorialPage3 />}
         {props.page === 4 && <TutorialPage4 />}
-        {props.page === 5 && <TutorialPage5 />}
       </div>
     </div>
   );

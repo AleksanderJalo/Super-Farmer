@@ -13,6 +13,11 @@ function App() {
   const htpHandler = () => {
     setHowToPlay(true);
   };
+
+  const exitToMenu = () => {
+    setHowToPlay(false);
+    setPlayClick(false);
+  };
   return (
     <div>
       {
@@ -25,7 +30,7 @@ function App() {
             />
           )}
           {playClick && <GameplayPage />}
-          {howToPlay && <HowToPlayPage />}
+          {howToPlay && <HowToPlayPage onExit={exitToMenu} />}
         </div>
       }
     </div>

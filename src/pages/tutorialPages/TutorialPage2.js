@@ -5,8 +5,8 @@ const TutorialPage2 = () => {
   return (
     <div className="flex font-bold">
       <div className="flex flex-col border-r-8 border-black w-1/2   text-white">
-        <div className="flex-wrap font-skranji   py-6  px-3 bg-[#e2525c] border-black border-b-8">
-          FIRST THING YOU DO IN TURN IS TRADING ANIMALS.
+        <div className="flex-wrap  font-skranji  py-6  px-3 bg-[#e2525c] border-black border-b-8">
+          FIRST YOU CAN DO ONE TRADE.
         </div>
         <div className=" w-full h-full flex  justify-center ">
           <img className="py-6  w-1/4" src={cheatSheetPng} alt={"Trades"} />
