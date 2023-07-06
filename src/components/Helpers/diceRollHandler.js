@@ -15,9 +15,10 @@ const diceRollHandler = (leftRoll, rightRoll, farm) => {
     const goodAnimals = ["r", "s", "p", "c", "h"];
     for (const goodAnimal of goodAnimals) {
       if (leftRoll === goodAnimal) {
-        const howMany =
-        Math.floor(farm.filter((animal) => animal === leftRoll).length + 1) / 2
-        
+        const howMany = Math.floor(
+          (farm.filter((animal) => animal === leftRoll).length + 1) / 2
+        );
+
         if (howMany > 0) {
           for (let i = 0; (i = 0 < howMany); i++) {
             finalObject.get.push(leftRoll);
@@ -25,8 +26,9 @@ const diceRollHandler = (leftRoll, rightRoll, farm) => {
         }
       }
       if (rightRoll === goodAnimal) {
-        const howMany =
-        Math.floor(farm.filter((animal) => animal === rightRoll).length + 1) / 2
+        const howMany = Math.floor(
+          (farm.filter((animal) => animal === rightRoll).length + 1) / 2
+        );
         if (howMany > 0) {
           for (let i = 0; i < howMany; i++) {
             finalObject.get.push(rightRoll);
@@ -45,6 +47,7 @@ const diceRollHandler = (leftRoll, rightRoll, farm) => {
         const cow =
           farm.filter((animal) => animal === "c").length +
           finalObject.get.filter((animal) => animal === "c").length;
+
         if (sheep > 0) {
           finalObject.loose.push(Array(sheep).fill("s"));
         }
@@ -54,9 +57,9 @@ const diceRollHandler = (leftRoll, rightRoll, farm) => {
         if (cow > 0) {
           finalObject.loose.push(Array(sheep).fill("c"));
         }
+      } else {
+        finalObject.loose.push("bd");
       }
-    } else {
-      finalObject.loose.push("bd");
     }
 
     if (rightRoll === "f") {
