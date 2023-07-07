@@ -3,7 +3,7 @@ import { create } from "zustand";
 export const usePlayer1Store = create((set) => ({
   turn: 0,
   farm: [
-    ["r", "r", "r", "r", "r", "r", "c", "p", "s"],
+    ["r", "r", "r", "r", "r", "r", "c", "p", "s", "sd"],
     ["r", "r", "r"],
     ["r", "r"],
     ["r", "r", "r", "r"],
@@ -189,6 +189,14 @@ export const usePlayer1Store = create((set) => ({
       }
       const newFarm = state.farm;
       newFarm[state.turn] = newArray;
+      return { farm: newFarm };
+    });
+  },
+  setFarm: (newPlayerFarm) => {
+    set((state) => {
+      console.log(newPlayerFarm)
+      const newFarm = state.farm;
+      newFarm[state.turn] = newPlayerFarm;
       return { farm: newFarm };
     });
   },

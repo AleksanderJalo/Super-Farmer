@@ -2,59 +2,31 @@ import React, { useEffect, useState } from "react";
 import { usePlayer1Store } from "../stores/player1";
 import diceRollHandler from "./Helpers/diceRollHandler";
 const TurnHandler = () => {
-  const { farm, turn, isHuman, leftSpin, rightSpin, addAnimal, deleteAnimal } =
-    usePlayer1Store();
+  const { farm, turn, leftSpin, rightSpin, setFarm } = usePlayer1Store();
   const [phase, setPhase] = useState("trade");
   const [leftAnimal, setLeftAnimal] = useState(null);
   const [rightAnimal, setRightAnimal] = useState(null);
-  const [getAnimals, setGetAnimals] = useState([]);
-  const [looseAnimals, setLooseAnimals] = useState([]);
   useEffect(() => {
     if (
+      phase === "trade" &&
       leftSpin[turn] !== null &&
-      rightSpin[turn] !== null &&
-      phase === "trade"
+      rightSpin[turn] !== null
     ) {
-      console.log(leftSpin[turn]);
-      console.log(rightSpin[turn]);
       setLeftAnimal(leftSpin[turn]);
       setRightAnimal(rightSpin[turn]);
-      setPhase("afterRoll");
+      setPhase("afterRoll"); 
     }
+
     if (phase === "afterRoll") {
-        console.log(leftAnimal);
-        console.log(rightAnimal)
+      const newFarm = diceRollHandler(leftAnimal, rightAnimal, farm[turn]);
+      setFarm(newFarm);
       setPhase("endPrepare");
     }
+
     if (phase === "endPrepare") {
-    }
-    //   if (phase === "endPrepare") {
-    //       console.log("aaa")
-
-    //   if (getAnimals) {
-    //     if (getAnimals.length > 0) {
-    //       for (const animal of getAnimals) {
-    //         addAnimal(animal);
-    //       }
-    //     }
-    //     if (looseAnimals) {
-    //       console.log(looseAnimals);
-    //       if (looseAnimals.length > 0) {
-    //         for (const looseAnimal of looseAnimals) {
-    //           deleteAnimal(looseAnimal, 1);
-    //         }
-    //       }
-    //     }
-    //   }
-
-    //   if (looseAnimals && getAnimals) {
-    //     setPhase("end");
-    //   }
-    // }
-    if (phase === "end") {
       console.log("end");
     }
-  });
+  }, [phase, leftSpin, rightSpin, leftAnimal, rightAnimal, farm, turn]);
   return <div>TurnHandler</div>;
 };
 
