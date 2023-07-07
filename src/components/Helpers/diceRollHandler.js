@@ -35,7 +35,7 @@ const diceRollHandler = (leftRoll, rightRoll, farm) => {
         const noCows = noSheeps.filter((animal) => animal !== "c");
         finalFarm = noCows.filter((animal) => animal !== "p");
       } else {
-        finalFarm = finalFarm.filter((animal) => animal !== "bd")
+        finalFarm = finalFarm.filter((animal) => animal !== "bd");
       }
     }
     if (rightRoll === "f") {
@@ -45,9 +45,8 @@ const diceRollHandler = (leftRoll, rightRoll, farm) => {
           finalFarm.push("r");
         }
       } else {
-        finalFarm = finalFarm.filter((animal) => animal !== "sd")
+        finalFarm = finalFarm.filter((animal) => animal !== "sd");
       }
-      
     }
     return finalFarm;
   }

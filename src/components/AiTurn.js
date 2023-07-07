@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { usePlayer1Store } from "../stores/player1";
 import SpinWheel from "./SpinWheel";
-import stringToAnimal from "./Helpers/AnimalStringToObject";
+import diceRollHandler from "./Helpers/diceRollHandler";
 import { whatTrade, changeText } from "./Helpers/AiTrade";
 const AiTurn = (props) => {
   const propsCleanup = props.cleanup;
@@ -9,21 +9,21 @@ const AiTurn = (props) => {
     traded,
     setTraded,
     turn,
+    setFarm,
     checkTrades,
     nextTurn,
+    leftSpin,
+    rightSpin,
     farm,
     addMultipleAnimals,
     deleteAnimal,
   } = usePlayer1Store();
   const [phase, setPhase] = useState("trade");
   const [win, setWin] = useState(null);
-  const [leftSpin, setLeftSpin] = useState(null);
-  const [rightSpin, setRightSpin] = useState(null);
+
   const [startCleaning, setStartCleaning] = useState(false);
   const [tradeText, setTradeText] = useState("");
   const cleanup = () => {
-    setLeftSpin(null);
-    setRightSpin(null);
     setPhase("trade");
     setTraded();
     nextTurn();
@@ -67,35 +67,9 @@ const AiTurn = (props) => {
 
     if (phase === "end") {
       setWin(null);
-      if (rightSpin === "f") {
-        if (farm[turn].includes("sd")) {
-          deleteAnimal("sd", 1);
-        } else {
-          if (farm[turn].filter((x) => x === "r").length > 0) {
-            deleteAnimal("r", farm[turn].filter((x) => x === "r").length - 1);
-          }
-        }
-      }
-      if (leftSpin === "w") {
-        if (farm[turn].includes("bd")) {
-          deleteAnimal("bd", 1);
-        } else {
-          if (farm[turn].filter((x) => x === "c").length >= 0) {
-            deleteAnimal("c", farm[turn].filter((x) => x === "c").length);
-          }
-          if (farm[turn].filter((x) => x === "s").length >= 0) {
-            deleteAnimal("s", farm[turn].filter((x) => x === "s").length);
-          }
-          if (farm[turn].filter((x) => x === "p").length >= 0) {
-            deleteAnimal("p", farm[turn].filter((x) => x === "p ").length);
-          }
-        }
-      }
-      if (leftSpin === rightSpin) {
-        setWin(stringToAnimal(leftSpin));
-      }
-      setLeftSpin(null);
-      setRightSpin(null);
+      const newFarm = diceRollHandler("aa","bb", farm[turn]);
+      setFarm(newFarm);
+      console.log(newFarm);
       if (!startCleaning) {
         setStartCleaning(true);
         setTimeout(() => {
@@ -104,15 +78,9 @@ const AiTurn = (props) => {
         }, 1000);
       }
     }
-  }, [phase, turn, setWin, setStartCleaning]);
+  }, [phase, turn, setWin, setStartCleaning, ...leftSpin, ...rightSpin]);
 
-  const afterSpinHandler = (isLeft, animal) => {
-    if (isLeft) {
-      setLeftSpin(animal);
-    } else {
-      setRightSpin(animal);
-    }
-  };
+ 
 
   return (
     <div className="flex flex-col bg-white">
@@ -128,12 +96,11 @@ const AiTurn = (props) => {
             <SpinWheel
               isHuman={false}
               isLeft={true}
-              afterSpinHandler={afterSpinHandler}
+             
             />
             <SpinWheel
               isHuman={false}
               isLeft={false}
-              afterSpinHandler={afterSpinHandler}
             />
           </div>
           <div className="pb-2">Bot is Spinning...</div>

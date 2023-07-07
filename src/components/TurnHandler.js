@@ -1,33 +1,35 @@
 import React, { useEffect, useState } from "react";
 import { usePlayer1Store } from "../stores/player1";
 import diceRollHandler from "./Helpers/diceRollHandler";
-const TurnHandler = () => {
-  const { farm, turn, leftSpin, rightSpin, setFarm } = usePlayer1Store();
-  const [phase, setPhase] = useState("trade");
+const TurnHandler = (props) => {
+  const { farm, turn, leftSpin, rightSpin, setFarm , setLeftSpin, setRightSpin} = usePlayer1Store();
+  const [phase, setPhase] = useState("roll");
   const [leftAnimal, setLeftAnimal] = useState(null);
   const [rightAnimal, setRightAnimal] = useState(null);
   useEffect(() => {
     if (
-      phase === "trade" &&
+      phase === "roll" &&
       leftSpin[turn] !== null &&
       rightSpin[turn] !== null
-    ) {
+    ) { 
       setLeftAnimal(leftSpin[turn]);
       setRightAnimal(rightSpin[turn]);
-      setPhase("afterRoll"); 
-    }
+      setPhase("afterRoll");   
+      setTimeout(() => {
+        setLeftSpin(null);
+        setRightSpin(null);
+        props.afterRoll();
+      }, 500);
+      
+    } 
 
     if (phase === "afterRoll") {
       const newFarm = diceRollHandler(leftAnimal, rightAnimal, farm[turn]);
       setFarm(newFarm);
-      setPhase("endPrepare");
-    }
-
-    if (phase === "endPrepare") {
-      console.log("end");
-    }
-  }, [phase, leftSpin, rightSpin, leftAnimal, rightAnimal, farm, turn]);
-  return <div>TurnHandler</div>;
-};
+    }   
+  }, [phase, ...leftSpin, ...rightSpin]);
+  return <div ></div>;   
+}; 
 
 export default TurnHandler;
+  

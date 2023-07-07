@@ -10,17 +10,15 @@ const ActionWindow = () => {
     setWin(null);
     setPhase("trade");
   };
-  const {
-    isHuman,
-    turn,
-    nextTurn,
-
-  } = usePlayer1Store();
+  const { isHuman, turn, nextTurn } = usePlayer1Store();
   const [phase, setPhase] = useState("trade");
-  const [win, setWin] = useState(null);
+  const [get, setWin] = useState(null);
 
   const phaseHandler = () => {
     setPhase("roll");
+  };
+  const afterRollHandler = ( ) => {
+    setPhase("end");
   };
   const cleanup = () => {
     nextTurn();
@@ -28,7 +26,7 @@ const ActionWindow = () => {
 
   return (
     <div>
-      <TurnHandler />
+      <TurnHandler key={"turn1"} afterRoll={afterRollHandler} />
       {isHuman[turn] && (
         <div className="text-black border-4 w-[500px] border-black bg-white text-3xl ">
           <div className="w-full bg-green-600 px-4 py-3 text-white border-b-4 border-black">
@@ -42,30 +40,15 @@ const ActionWindow = () => {
           {phase === "trade" && <TradeAction phaseHandler={phaseHandler} />}
           {phase === "roll" && (
             <div className="flex justify-center gap-10 mt-4 mb-2 p-4">
-              <SpinWheel isHuman={true} isLeft={true} />
-              <SpinWheel isHuman={true} isLeft={false} />
+              <SpinWheel key={ "spin1"} isHuman={true} isLeft={true} />
+              <SpinWheel key={ "spin2"} isHuman={true} isLeft={false} />
             </div>
           )}
 
           {phase === "end" && (
             <div className="m-8 flex flex-col items-center">
-              <div>Congratulations you won </div>
-              <div className="p-2 mt-2 border-4 border-black bg-green-600">
-                {stringToAnimal(win, 100)}
-              </div>
               <div
-                className="border-4 border-black rounded-lg p-2 bg-red-600 text-white hover:bg-red-500 cursor-pointer mt-6 "
-                onClick={cleanup}
-              >
-                End Turn
-              </div>
-            </div>
-          )}
-          {phase === "afterRoll" && !win && (
-            <div className="m-8 flex flex-col items-center">
-              <div>Sorry, You Lost! </div>
-              <div
-                className="border-4 border-black rounded-lg p-2 bg-red-600 text-white hover:bg-red-500 cursor-pointer mt-6 "
+                className="border-4 border-black rounded-lg p-4 bg-red-600 text-white hover:bg-red-500 cursor-pointer  "
                 onClick={cleanup}
               >
                 End Turn
