@@ -22,13 +22,8 @@ const TurnHandler = () => {
       setPhase("afterRoll");
     }
     if (phase === "afterRoll") {
-      const { get, loose } = diceRollHandler(
-        leftAnimal,
-        rightAnimal,
-        farm[turn]
-      );
-      setGetAnimals(get);
-      setLooseAnimals(loose);
+        console.log(leftAnimal);
+        console.log(rightAnimal)
       setPhase("endPrepare");
     }
     if (phase === "endPrepare") {
