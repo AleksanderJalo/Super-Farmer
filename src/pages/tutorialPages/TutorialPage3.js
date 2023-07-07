@@ -6,11 +6,11 @@ const TutorialPage3 = () => {
       <div className="px-3 py-8 text-5xl font-skranji bg-[#e2525c] text-white border-black border-b-8 h-1/5">
         {" "}
         AFTER ROLLING. <br />
-        YOU GET AN ANIMAL FOR EVERY PAIR YOU HAVE.
+        YOU GET AN ANIMAL FOR EVERY PAIR OF ANIMAL YOU ROLLED.
       </div>
       <div className="">
         <div className="flex">
-        <div className="flex flex-col items-center justify-center gap-10 w-1/2 ">
+        <div className="flex flex-col items-center justify-center gap-3 w-1/2 ">
             <div className=" flex  justify-center">
               <div
                 className={`text-6xl mx-12 my-6 bg-white pb-3 border-4 border-black w-full`}
@@ -20,7 +20,7 @@ const TutorialPage3 = () => {
                 </div>
                 <div className="px-5 py-3 text-4xl">Animals:</div>
                 <div className="border-black border-2 border-dashed mx-2 text-xl px-3 pt-4 pb-4 flex justify-between gap-2">
-                  {["r", "r", "r", "s", "s", "p"].map((animal) => (
+                  {["r", "r", "r", "s","s", "p", "p"].map((animal) => (
                     <div>{stringToAnimal(animal, 80)}</div>
                   ))}
                 </div>
@@ -28,10 +28,10 @@ const TutorialPage3 = () => {
             </div>
             <div className="w-1/2 flex justify-center gap-32">
               <div className="p-4 border-8 border-black bg-green-600">
-                {stringToAnimal("r", 150)}
+                {stringToAnimal("r", 1500)}
               </div>
               <div className="p-4 pl-6 border-8 border-black bg-green-600">
-                {stringToAnimal("s", 150)}
+                {stringToAnimal("s", 100)}
               </div>
             </div>
           </div>
@@ -47,14 +47,11 @@ const TutorialPage3 = () => {
                       4 x{" "}
                       <span className="ml-2">{stringToAnimal("r", 100)}</span>
                     </div>
-                    <div className="flex items-center bg-white w-full justify-center py-6 border-black border-b-8">
+                    <div className="flex items-center bg-white w-full justify-center py-6 ">
                       3 x{" "}
                       <span className="ml-3">{stringToAnimal("s", 100)}</span>
                     </div>
-                    <div className="flex items-center bg-white w-full justify-center py-6">
-                      1 x{" "}
-                      <span className="ml-2">{stringToAnimal("p", 100)}</span>
-                    </div>
+                    
                   </div>
                 </div>
                 <div className="w-1/2">
@@ -66,14 +63,11 @@ const TutorialPage3 = () => {
                       2 x{" "}
                       <span className="ml-2">{stringToAnimal("r", 100)}</span>
                     </div>
-                    <div className="flex items-center bg-white w-full justify-center py-6 border-black border-b-8">
+                    <div className="flex items-center bg-white w-full justify-center py-6 ">
                       1 x{" "}
                       <span className="ml-3">{stringToAnimal("s", 100)}</span>
                     </div>
-                    <div className="flex items-center bg-white w-full justify-center py-6">
-                      0 x{" "}
-                      <span className="ml-2">{stringToAnimal("p", 100)}</span>
-                    </div>
+                  
                   </div>
                 </div>
               </div>

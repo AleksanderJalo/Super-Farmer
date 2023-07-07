@@ -1,67 +1,34 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import SpinWheel from "./SpinWheel";
 import { usePlayer1Store } from "../stores/player1";
 import TradeAction from "./Actions/TradeAction";
 import stringToAnimal from "./Helpers/AnimalStringToObject";
 import AiTurn from "./AiTurn";
-import diceRollHandler from "./Helpers/diceRollHandler";
+import TurnHandler from "./TurnHandler";
 const ActionWindow = () => {
   const cleanupAi = () => {
     setWin(null);
     setPhase("trade");
-    setLeftSpin(null);
-    setRightSpin(null);
   };
   const {
     isHuman,
-    leftSpin,
-    rightSpin,
-    addAnimal,
-    setLeftSpin,
-    setRightSpin,
     turn,
     nextTurn,
-    farm,
-    deleteAnimal,
-  } = usePlayer1Store();
-  const [looseLeft, setLooseLeft] = useState(null);
-  const [looseRight, setLooseRight] = useState(null);
-  const [phase, setPhase] = useState("trade");
 
+  } = usePlayer1Store();
+  const [phase, setPhase] = useState("trade");
   const [win, setWin] = useState(null);
 
   const phaseHandler = () => {
     setPhase("roll");
   };
   const cleanup = () => {
-    setWin(null);
-    setPhase("trade");
-    setLeftSpin(null);
-    setRightSpin(null);
     nextTurn();
   };
 
-  useEffect(() => {
-    if (leftSpin[turn] !== null && rightSpin[turn] !== null) {
-      setLooseLeft(leftSpin[turn]);
-      setLooseRight(rightSpin[turn]);
-      setTimeout(() => {
-        setPhase("afterRoll");
-      }, 1000);
-      if (leftSpin[turn] === rightSpin[turn]) {
-        addAnimal(leftSpin[turn]);
-        setWin(leftSpin[turn]);
-      }
-      setLeftSpin(null);
-      setRightSpin(null);
-    }
-    if (phase === "afterRoll") {
-      console.log(diceRollHandler(looseLeft, looseRight, farm[turn]))
-      
-    }
-  });
   return (
     <div>
+      <TurnHandler />
       {isHuman[turn] && (
         <div className="text-black border-4 w-[500px] border-black bg-white text-3xl ">
           <div className="w-full bg-green-600 px-4 py-3 text-white border-b-4 border-black">

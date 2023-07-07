@@ -1,5 +1,3 @@
-import { usePlayer1Store } from "../../stores/player1";
-
 const diceRollHandler = (leftRoll, rightRoll, farm) => {
   if (leftRoll === rightRoll) {
     if (farm.includes(leftRoll)) {
@@ -14,6 +12,8 @@ const diceRollHandler = (leftRoll, rightRoll, farm) => {
     const finalObject = { get: [], loose: [] };
     const goodAnimals = ["r", "s", "p", "c", "h"];
     for (const goodAnimal of goodAnimals) {
+      console.log(goodAnimal);
+      console.log("aaaa")
       if (leftRoll === goodAnimal) {
         const howMany = Math.floor(
           (farm.filter((animal) => animal === leftRoll).length + 1) / 2
@@ -33,10 +33,13 @@ const diceRollHandler = (leftRoll, rightRoll, farm) => {
           for (let i = 0; i < howMany; i++) {
             finalObject.get.push(rightRoll);
           }
+          console.log(finalObject);
         }
       }
     }
+   
     if (leftRoll === "w") {
+      console.log(leftRoll)
       if (!farm.includes("bd")) {
         const sheep =
           farm.filter((animal) => animal === "s").length +
@@ -49,13 +52,20 @@ const diceRollHandler = (leftRoll, rightRoll, farm) => {
           finalObject.get.filter((animal) => animal === "c").length;
 
         if (sheep > 0) {
-          finalObject.loose.push(Array(sheep).fill("s"));
+          for (let i = 0; i < sheep; i++){
+            finalObject.loose.push("s");
+          }
+          
         }
         if (pig > 0) {
-          finalObject.loose.push(Array(sheep).fill("p"));
+          for (let i = 0; i < pig; i++){
+            finalObject.loose.push("p");
+          }
         }
         if (cow > 0) {
-          finalObject.loose.push(Array(sheep).fill("c"));
+          for (let i = 0; i < cow; i++){ 
+            finalObject.loose.push("c");
+          }
         }
       } else {
         finalObject.loose.push("bd");
@@ -63,6 +73,7 @@ const diceRollHandler = (leftRoll, rightRoll, farm) => {
     }
 
     if (rightRoll === "f") {
+      console.log(rightRoll)
       if (!farm.includes("sd")) {
         const rabbits =
           farm.filter((animal) => animal === "r").length +
@@ -75,6 +86,7 @@ const diceRollHandler = (leftRoll, rightRoll, farm) => {
         finalObject.loose.push("sd");
       }
     }
+    console.log(finalObject);
     return finalObject;
   }
 };

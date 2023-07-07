@@ -64,7 +64,9 @@ const SpinWheel = (props) => {
         const rolledAnimal = leftAnimals[Math.floor(Math.random() * 12)];
         setAnimal(stringToAnimal(rolledAnimal, 100));
         setDidLeftSpin(true);
+
         setLeftSpin(rolledAnimal);
+
         if (!props.isHuman) {
           props.afterSpinHandler(true, rolledAnimal);
         }
@@ -89,6 +91,7 @@ const SpinWheel = (props) => {
         setDidRightSpin(true);
 
         setRightSpin(rolledAnimal);
+
         if (!props.isHuman) {
           props.afterSpinHandler(false, rolledAnimal);
         }
