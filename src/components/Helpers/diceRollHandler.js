@@ -1,4 +1,7 @@
+import farmDifference from "./FarmDifference";
+
 const diceRollHandler = (leftRoll, rightRoll, farm) => {
+  const oldFarm = farm;
   let finalFarm = farm;
   if (leftRoll === rightRoll) {
     const howMany = Math.floor(
@@ -48,6 +51,7 @@ const diceRollHandler = (leftRoll, rightRoll, farm) => {
         finalFarm = finalFarm.filter((animal) => animal !== "sd");
       }
     }
+ 
     return finalFarm;
   }
 };

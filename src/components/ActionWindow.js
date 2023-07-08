@@ -1,24 +1,25 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import SpinWheel from "./SpinWheel";
 import { usePlayer1Store } from "../stores/player1";
 import TradeAction from "./Actions/TradeAction";
-import stringToAnimal from "./Helpers/AnimalStringToObject";
-import AiTurn from "./AiTurn";
 import AiTradeAction from "./Actions/AiTradeAction";
 import TurnHandler from "./TurnHandler";
+import farmDifference from "./Helpers/FarmDifference";
 const ActionWindow = () => {
-  const cleanupAi = () => {
-    setWin(null);
-    setPhase("trade");
-  };
-  const { isHuman, turn, nextTurn } = usePlayer1Store();
+  const { isHuman, turn, nextTurn, farm } = usePlayer1Store();
+  const [oldFarm, setOldFarm] = useState(null);
   const [phase, setPhase] = useState("trade");
-  const [get, setWin] = useState(null);
 
+  useEffect(() => {
+    const farmToChange = [...farm[turn]]
+    setOldFarm(farmToChange);
+    console.log("a")
+  },[turn])
   const phaseHandler = () => {
     setPhase("roll");
   };
-  const afterRollHandler = () => {
+  const afterRollHandler = ()=> {
+    farmDifference(oldFarm, farm[turn]);
     setPhase("end");
   };
   const cleanup = () => {

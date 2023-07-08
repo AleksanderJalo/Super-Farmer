@@ -84,9 +84,7 @@ const SpinWheel = (props) => {
         ];
         const rolledAnimal = rightAnimals[Math.floor(Math.random() * 12)];
         setAnimal(stringToAnimal(rolledAnimal, 100));
-
         setDidRightSpin(true);
-
         setRightSpin(rolledAnimal);
 
       }

@@ -194,10 +194,10 @@ export const usePlayer1Store = create((set) => ({
   },
   setFarm: (newPlayerFarm) => {
     set((state) => {
-      console.log(newPlayerFarm)
       const newFarm = state.farm;
       newFarm[state.turn] = newPlayerFarm;
       return { farm: newFarm };
     });
   },
+
 }));
