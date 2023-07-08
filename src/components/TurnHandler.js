@@ -18,6 +18,9 @@ const TurnHandler = (props) => {
       setTimeout(() => {
         setLeftSpin(null);
         setRightSpin(null);
+        setLeftAnimal(null);
+        setRightAnimal(null);
+        setPhase("roll");
         props.afterRoll();
       }, 500);
       

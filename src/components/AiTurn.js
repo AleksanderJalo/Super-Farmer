@@ -14,6 +14,8 @@ const AiTurn = (props) => {
     nextTurn,
     leftSpin,
     rightSpin,
+    setLeftSpin,
+    setRightSpin,
     farm,
     addMultipleAnimals,
     deleteAnimal,
@@ -23,11 +25,6 @@ const AiTurn = (props) => {
 
   const [startCleaning, setStartCleaning] = useState(false);
   const [tradeText, setTradeText] = useState("");
-  const cleanup = () => {
-    setPhase("trade");
-    setTraded();
-    nextTurn();
-  };
 
   useEffect(() => {
     if (phase === "trade" && !traded[turn]) {
@@ -67,20 +64,29 @@ const AiTurn = (props) => {
 
     if (phase === "end") {
       setWin(null);
-      const newFarm = diceRollHandler("aa","bb", farm[turn]);
+      console.log(farm[turn]);
+      const newFarm = diceRollHandler(
+        leftSpin[turn],
+        rightSpin[turn],
+        farm[turn]
+      );
       setFarm(newFarm);
       console.log(newFarm);
       if (!startCleaning) {
         setStartCleaning(true);
         setTimeout(() => {
-          cleanup();
           propsCleanup();
         }, 1000);
       }
     }
-  }, [phase, turn, setWin, setStartCleaning, ...leftSpin, ...rightSpin]);
-
- 
+    return () => {
+      setPhase("trade");
+      setTraded();
+      nextTurn();
+      setLeftSpin(null);
+      setRightSpin(null);
+    };
+  }, [phase, turn, setWin, setStartCleaning, ...leftSpin, ...rightSpin, leftSpin, rightSpin]);
 
   return (
     <div className="flex flex-col bg-white">
@@ -93,15 +99,8 @@ const AiTurn = (props) => {
       {phase === "roll" && (
         <div className="text-4xl border-4 border-black">
           <div className="flex justify-center gap-10   p-4  py-4">
-            <SpinWheel
-              isHuman={false}
-              isLeft={true}
-             
-            />
-            <SpinWheel
-              isHuman={false}
-              isLeft={false}
-            />
+            <SpinWheel isHuman={false} isLeft={true} />
+            <SpinWheel isHuman={false} isLeft={false} />
           </div>
           <div className="pb-2">Bot is Spinning...</div>
         </div>
