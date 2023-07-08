@@ -5,22 +5,32 @@ import TradeAction from "./Actions/TradeAction";
 import AiTradeAction from "./Actions/AiTradeAction";
 import TurnHandler from "./TurnHandler";
 import farmDifference from "./Helpers/FarmDifference";
+import EndTurnDisplay from "./EndTurnDisplay";
 const ActionWindow = () => {
   const { isHuman, turn, nextTurn, farm } = usePlayer1Store();
   const [oldFarm, setOldFarm] = useState(null);
   const [phase, setPhase] = useState("trade");
-
+  const [animalsBalance, setAnimalsBalance] = useState([]);
   useEffect(() => {
-    const farmToChange = [...farm[turn]]
-    setOldFarm(farmToChange);
-    console.log("a")
-  },[turn])
+    if (phase === "afterRoll") {
+      setTimeout(() => {
+        setPhase("end");
+      }, 800);
+    }
+  }, [phase]);
+  useEffect(() => {
+    
+    setAnimalsBalance([]);
+  }, [turn]);
   const phaseHandler = () => {
     setPhase("roll");
+    const farmToChange = [...farm[turn]];
+    setOldFarm(farmToChange);
   };
-  const afterRollHandler = ()=> {
-    farmDifference(oldFarm, farm[turn]);
-    setPhase("end");
+  const afterRollHandler = () => {
+    const finalObject = farmDifference(oldFarm, farm[turn]);
+    setAnimalsBalance(finalObject);
+    setPhase("afterRoll");
   };
   const cleanup = () => {
     nextTurn();
@@ -36,8 +46,11 @@ const ActionWindow = () => {
             {phase === "trade" && (
               <div> Player {(turn % 4) + 1} : Trade Phase</div>
             )}
-            {(phase === "roll" || phase === "end") && (
+            {(phase === "roll"  || phase === "afterRoll") && (
               <div> Player {(turn % 4) + 1} : Rolling Phase</div>
+            )}
+             {phase === "end" && (
+              <div> Player {(turn % 4) + 1} : End Phase</div>
             )}
           </div>
           {phase === "trade" && isHuman[turn] && (
@@ -46,13 +59,13 @@ const ActionWindow = () => {
           {phase === "trade" && !isHuman[turn] && (
             <AiTradeAction phaseHandler={phaseHandler} />
           )}
-          {phase === "roll" && isHuman[turn] && (
+          {(phase === "roll" || phase === "afterRoll") && isHuman[turn] && (
             <div className="flex justify-center gap-10 mt-4 mb-2 p-4">
               <SpinWheel key={"spin1"} isHuman={true} isLeft={true} />
               <SpinWheel key={"spin2"} isHuman={true} isLeft={false} />
             </div>
           )}
-          {phase === "roll" && !isHuman[turn] && (
+          {(phase === "roll" || phase === "afterRoll") && !isHuman[turn] && (
             <div className="flex justify-center gap-10 mt-4 mb-2 p-4">
               <SpinWheel key={"spin1"} isHuman={false} isLeft={true} />
               <SpinWheel key={"spin2"} isHuman={false} isLeft={false} />
@@ -61,6 +74,16 @@ const ActionWindow = () => {
 
           {phase === "end" && (
             <div className="m-8 flex flex-col items-center">
+              {animalsBalance.length > 0 && (
+                <div>
+                  <EndTurnDisplay display={animalsBalance} />
+                </div>
+              )}
+               {animalsBalance.length === 0 && (
+                <div className="py-3 mb-3">
+                  Player {turn % 4 + 1} won nothing. 
+                </div>
+              )}
               <div
                 className="border-4 border-black rounded-lg p-4 bg-red-600 text-white hover:bg-red-500 cursor-pointer  "
                 onClick={cleanup}

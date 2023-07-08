@@ -36,7 +36,7 @@ const AiTradeAction = (props) => {
       props.phaseHandler();
     }, 500);
   }, [turn]);
-  return <div className="text-3xl py-6 border-4 border-black">{tradeText}</div>;
+  return <div className="text-3xl py-6 ">{tradeText}</div>;
 };
 
 export default AiTradeAction;
