@@ -7,22 +7,22 @@ export const whatTrade = (botFarm) => {
   const pigCount = botFarm.filter((animal) => animal === "p").length;
   const sheepCount = botFarm.filter((animal) => animal === "s").length;
   const rabbitCount = botFarm.filter((animal) => animal === "r").length;
-  if (bigDogCount === 0 && cowCount > 0) {
+  if (bigDogCount === 0 && cowCount > 1) {
     return ["c", "bd", 1, 1];
   }
-  if (smallDogCount === 0 && sheepCount > 0) {
+  if (smallDogCount === 0 && sheepCount > 1) {
     return ["s", "sd", 1, 1];
   }
-  if (horsesCount === 0 && cowCount > 1) {
+  if (horsesCount === 0 && cowCount > 2) {
     return ["c", "h", 2, 1];
   }
-  if (cowCount === 0 && pigCount > 2) {
+  if (cowCount === 0 && pigCount > 3) {
     return ["p", "c", 3, 1];
   }
-  if (pigCount === 0 && sheepCount > 1) {
+  if (pigCount === 0 && sheepCount > 2) {
     return ["s", "p", 2, 1];
   }
-  if (sheepCount === 0 && rabbitCount > 5) {
+  if (sheepCount === 0 && rabbitCount > 6) {
     return ["r", "s", 6, 1];
   }
   if (rabbitCount > 6) {

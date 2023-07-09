@@ -15,9 +15,11 @@ const TradesList = (props) => {
   const [trades, setTrades] = useState([]);
   useEffect(() => {
     setTrades(tradesToList(tradesArray, props.phaseHandler));
-    if (!tradesArray.includes(true)) {
-      props.phaseHandler();
-    }
+    setTimeout(() => {
+      if (!tradesArray.includes(true)) {
+        props.phaseHandler();
+      }
+    }, 200);
   }, [tradesArray, setTrades]);
 
   return <div className="flex flex-col items-center text-3xl">{trades}</div>;

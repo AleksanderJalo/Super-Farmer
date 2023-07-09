@@ -3,12 +3,12 @@ import { create } from "zustand";
 export const usePlayer1Store = create((set) => ({
   turn: 0,
   farm: [
-    ["r", "r", "r", "r", "r", "r", "c", "p", "s", "sd"],
-    ["r", "r", "r"],
-    ["r", "r"],
-    ["r", "r", "r", "r"],
+    ["r","r","r","r","r","r","r","r"],
+    ["r","r","r","r","r"],
+    [],
+    [],
   ],
-  isHuman: [true, false, false, false],
+  isHuman: [true, true, false, false],
   traded: [false, false, false, false],
   setTraded: () => {
     set((state) => {

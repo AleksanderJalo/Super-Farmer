@@ -16,7 +16,7 @@ const HowToPlayPage = (props) => {
       <div className="w-[90%] h-[90%]   relative">
         <TutorialContent page={whichPage} />
         <ExitButton onClick={props.onExit} />
-        {whichPage < 4 && <NextPageButton onClick={nextPageHandler} />}
+        {whichPage < 5 && <NextPageButton onClick={nextPageHandler} />}
         {whichPage > 1 && <PreviousPageButton onClick={previousPageHandler} />}
       </div>
     </div>

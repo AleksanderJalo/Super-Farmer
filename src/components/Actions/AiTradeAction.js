@@ -11,7 +11,7 @@ const AiTradeAction = (props) => {
     deleteAnimal,
     addMultipleAnimals,
   } = usePlayer1Store();
-  const [tradeText, setTradeText] = useState("");
+  const [tradeText, setTradeText] = useState("No trades.");
 
   useEffect(() => {
     setTraded();
@@ -30,11 +30,15 @@ const AiTradeAction = (props) => {
         )
       );
     } else {
-      setTradeText("No trades");
+      setTimeout(() => {
+        if (tradeText.length === 0) {
+          setTradeText("No trades");
+        }
+      }, 20);
     }
     setTimeout(() => {
       props.phaseHandler();
-    }, 500);
+    }, 1000);
   }, [turn]);
   return <div className="text-3xl py-6 ">{tradeText}</div>;
 };

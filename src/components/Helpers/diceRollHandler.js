@@ -8,7 +8,9 @@ const diceRollHandler = (leftRoll, rightRoll, farm) => {
       (2 + farm.filter((animal) => animal === leftRoll).length) / 2
     );
     for (let i = 0; i < howMany; i++) {
-      finalFarm.push(leftRoll);
+      if (finalFarm.filter((x) => x === leftRoll).length < 10) {
+        finalFarm.push(leftRoll);
+      }
     }
     return finalFarm;
   } else {
@@ -19,7 +21,9 @@ const diceRollHandler = (leftRoll, rightRoll, farm) => {
           (1 + farm.filter((animal) => animal === goodAnimal).length) / 2
         );
         for (let i = 0; i < howMany; i++) {
-          finalFarm.push(goodAnimal);
+          if (finalFarm.filter((x) => x === goodAnimal).length < 10) {
+            finalFarm.push(goodAnimal);
+          }
         }
       }
 
@@ -28,7 +32,9 @@ const diceRollHandler = (leftRoll, rightRoll, farm) => {
           (1 + farm.filter((animal) => animal === goodAnimal).length) / 2
         );
         for (let i = 0; i < howMany; i++) {
-          finalFarm.push(goodAnimal);
+          if (finalFarm.filter((x) => x === goodAnimal).length < 10) {
+            finalFarm.push(goodAnimal);
+          }
         }
       }
     }
@@ -51,7 +57,7 @@ const diceRollHandler = (leftRoll, rightRoll, farm) => {
         finalFarm = finalFarm.filter((animal) => animal !== "sd");
       }
     }
- 
+
     return finalFarm;
   }
 };
