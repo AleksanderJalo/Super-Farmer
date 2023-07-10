@@ -49,7 +49,7 @@ const ActionWindow = () => {
           <TurnHandler key={"turnHand"} afterRoll={afterRollHandler} />
           {
             <div className="text-black border-4 w-[500px] border-black bg-white text-3xl ">
-              <div className="w-full bg-green-600 px-4 py-3 text-white border-b-4 border-black">
+              <div className={`w-full bg-green-600 px-4 py-3 text-white ${!phase==="trade"?"border-b-4": "border-b-0"} border-black`}>
                 {phase === "trade" && (
                   <div> Player {(turn % 4) + 1} : Trade Phase</div>
                 )}

@@ -18,11 +18,11 @@ const TradeButton = (props) => {
           break;
         case 2:
           deleteAnimal("p", 1);
-          addMultipleAnimals("c", 2);
+          addMultipleAnimals("s", 2);
           props.phaseHandler();
           break;
         case 3:
-          deleteAnimal("c", 2);
+          deleteAnimal("s", 2);
           addMultipleAnimals("p", 1);
           props.phaseHandler();
           break;

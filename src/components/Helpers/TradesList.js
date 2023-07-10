@@ -10,17 +10,19 @@ import { ReactComponent as Horse } from "../../images/horse.svg";
 import TradeButton from "../TradeButton";
 
 const TradesList = (props) => {
-  const { canTrade, turn } = usePlayer1Store();
-  const tradesArray = canTrade[turn];
+  const { canTrade, turn, checkTrades } = usePlayer1Store();
   const [trades, setTrades] = useState([]);
   useEffect(() => {
+    checkTrades()
+    const tradesArray = canTrade[turn];
     setTrades(tradesToList(tradesArray, props.phaseHandler));
+    console.log(trades);
     setTimeout(() => {
       if (!tradesArray.includes(true)) {
         props.phaseHandler();
       }
     }, 200);
-  }, [tradesArray, setTrades]);
+  }, [setTrades]);
 
   return <div className="flex flex-col items-center text-3xl">{trades}</div>;
 };
@@ -31,7 +33,10 @@ const tradesToList = (trades, phaseHandler) => {
   const tradeList = [];
   if (trades[0] === true || trades[1] === true) {
     tradeList.push(
-      <div className="flex justify-center  border-black border-t-0 w-full py-2 px-6">
+      <div
+        key={"aa"}
+        className="flex justify-center  border-black border-t-4 w-full py-2 px-6"
+      >
         <div className="flex gap-4 justify-center pt-2  ">
           {trades[0] === true ? (
             <TradeButton
@@ -42,9 +47,9 @@ const tradesToList = (trades, phaseHandler) => {
           ) : (
             <TradeButton enabled={false} />
           )}
-          6 x <Rabbit className="w-[40px] h-[40px] pb-2" />
-          <div className="mr-2">=</div> 1 x{" "}
-          <Sheep className="w-[40px] h-[40px] pb-2" />
+          1 x <Sheep className="w-[40px] h-[40px] pb-2" />
+          <div className="mr-2">=</div> 6 x{" "}
+          <Rabbit className="w-[40px] h-[40px] pb-2" />
           {trades[1] === true ? (
             <TradeButton
               enabled={true}
@@ -60,7 +65,10 @@ const tradesToList = (trades, phaseHandler) => {
   }
   if (trades[2] === true || trades[3] === true) {
     tradeList.push(
-      <div className="flex justify-center  border-black border-t-4 w-full py-2 px-6">
+      <div
+        key={"ab"}
+        className="flex justify-center  border-black border-t-4 w-full py-2 px-6"
+      >
         <div className="flex gap-4 justify-center pt-2  ">
           {trades[2] === true ? (
             <TradeButton
@@ -71,9 +79,9 @@ const tradesToList = (trades, phaseHandler) => {
           ) : (
             <TradeButton enabled={false} />
           )}
-          1 x <Pig className="w-[45px] h-[45px] pb-2" />
-          <div className="mr-2">=</div> 2 x{" "}
-          <Sheep className="w-[40px] h-[40px] pb-2" />
+          2 x<Sheep className="w-[40px] h-[40px] pb-2" />
+          <div className="mr-2">=</div> 1 x{" "}
+          <Pig className="w-[45px] h-[45px] pb-2" />
           {trades[3] === true ? (
             <TradeButton
               enabled={true}
@@ -89,7 +97,10 @@ const tradesToList = (trades, phaseHandler) => {
   }
   if (trades[4] === true || trades[5] === true) {
     tradeList.push(
-      <div className="flex justify-center  border-black border-t-4 w-full py-2 px-6">
+      <div
+        key={"ac"}
+        className="flex justify-center  border-black border-t-4 w-full py-2 px-6"
+      >
         <div className="flex gap-4 justify-center pt-2  ">
           {trades[4] === true ? (
             <TradeButton
@@ -100,9 +111,9 @@ const tradesToList = (trades, phaseHandler) => {
           ) : (
             <TradeButton enabled={false} />
           )}
-          1 x <Cow className="w-[40px] h-[40px] pb-2" />
-          <div className="mr-2">=</div> 3 x{" "}
-          <Pig className="w-[45px] h-[45px] pb-2" />
+          3 x <Pig className="w-[45px] h-[45px] pb-2" />
+          <div className="mr-2">=</div> 1 x{" "}
+          <Cow className="w-[40px] h-[40px] pb-2" />
           {trades[5] === true ? (
             <TradeButton
               enabled={true}
@@ -118,7 +129,10 @@ const tradesToList = (trades, phaseHandler) => {
   }
   if (trades[6] === true || trades[7] === true) {
     tradeList.push(
-      <div className="flex justify-center  border-black border-t-4 w-full py-2 px-6">
+      <div
+        key={"af"}
+        className="flex justify-center  border-black border-t-4 w-full py-2 px-6"
+      >
         <div className="flex gap-4 justify-center pt-2  ">
           {trades[6] === true ? (
             <TradeButton
@@ -129,9 +143,9 @@ const tradesToList = (trades, phaseHandler) => {
           ) : (
             <TradeButton enabled={false} />
           )}
-          1 x <Horse className="w-[40px] h-[40px] pb-2" />
-          <div className="mr-2">=</div> 2 x{" "}
-          <Cow className="w-[45px] h-[45px] pb-2" />
+          2 x <Cow className="w-[45px] h-[45px] pb-2" />
+          <div className="mr-2">=</div> 1 x{" "}
+          <Horse className="w-[40px] h-[40px] pb-2" />
           {trades[7] === true ? (
             <TradeButton
               enabled={true}
@@ -147,7 +161,10 @@ const tradesToList = (trades, phaseHandler) => {
   }
   if (trades[8] === true || trades[9] === true) {
     tradeList.push(
-      <div className="flex justify-center  border-black border-t-4 w-full py-2 px-6">
+      <div
+        key={"ag"}
+        className="flex justify-center  border-black border-t-4 w-full py-2 px-6"
+      >
         <div className="flex gap-4 justify-center pt-2  ">
           {trades[8] === true ? (
             <TradeButton
@@ -158,9 +175,9 @@ const tradesToList = (trades, phaseHandler) => {
           ) : (
             <TradeButton enabled={false} />
           )}
+          1 x<Sheep className="w-[45px] h-[45px] pb-2" />
+          <div className="mr-2">=</div>
           1 x <SmallDog className="w-[50px] h-[50px] pb-2" />
-          <div className="mr-2">=</div> 1 x
-          <Sheep className="w-[45px] h-[45px] pb-2" />
           {trades[9] === true ? (
             <TradeButton
               enabled={true}
@@ -176,7 +193,10 @@ const tradesToList = (trades, phaseHandler) => {
   }
   if (trades[10] === true || trades[11] === true) {
     tradeList.push(
-      <div className="flex justify-center  border-black border-t-4 w-full py-2 px-6">
+      <div
+        key={"az"}
+        className="flex justify-center  border-black border-t-4 w-full py-2 px-6"
+      >
         <div className="flex gap-4 justify-center pt-2  ">
           {trades[10] === true ? (
             <TradeButton
@@ -187,9 +207,10 @@ const tradesToList = (trades, phaseHandler) => {
           ) : (
             <TradeButton enabled={false} />
           )}
-          1 x <BigDog className="w-[50px] h-[50px] pb-2" />
-          <div className="mr-2">=</div> 1 x
+          1 x
           <Cow className="w-[45px] h-[45px] pb-2" />
+          <div className="mr-2">=</div>
+          1 x <BigDog className="w-[50px] h-[50px] pb-2" />
           {trades[11] === true ? (
             <TradeButton
               enabled={true}
