@@ -52,10 +52,10 @@ const ActionWindow = (props) => {
     <React.Fragment>
       {didSomeoneWin && <div className="bg-white border-8 border-black text-4xl p-6">Player {turn % 4 + 1} won</div>}
       {!didSomeoneWin && (
-        <div>
+        <div className={`${(phase==="trade" && isHuman[turn])?"w-[600px]":"w-[500px]"}`}>
           <TurnHandler key={"turnHand"} afterRoll={afterRollHandler} />
           {
-            <div className={`text-black border-4  ${(phase==="trade" && isHuman[turn])?"w-[600px]":"w-[500px"} border-black bg-white text-3xl `}>
+            <div className={`text-black border-4   border-black bg-white text-3xl `}>
               <div className={`w-full bg-green-600 px-4 py-3 text-white border-b-4 border-black`}>
                 {phase === "trade" && (
                   <div> Player {(turn % 4) + 1} : Trade Phase</div>

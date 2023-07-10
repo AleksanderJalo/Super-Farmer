@@ -190,3 +190,4 @@ const TradesList = (props) => {
 
 export default TradesList;
 
+  

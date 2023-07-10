@@ -3,7 +3,7 @@ import { create } from "zustand";
 export const usePlayer1Store = create((set) => ({
   turn: 0,
   farm: [
-    ["c","c","s"],
+    ["c","c","s","c"],
     [],
     [],
     [],

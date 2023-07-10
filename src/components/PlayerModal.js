@@ -3,7 +3,7 @@ import PlayerFarm from "./PlayerFarm";
 const PlayerModal = (props) => {
   return (
     <div
-      className={`text-6xl ml-5 bg-white pb-3 border-4 border-black ${props.extraStyles}`}
+      className={`text-6xl  bg-white pb-3 border-4 border-black ${props.extraStyles}`}
     >
       <div className="w-full py-2 px-10 bg-[#e2525c] text-3xl text-white border-black border-b-4">
         Player {props.playerNr}
