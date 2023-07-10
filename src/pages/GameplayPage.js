@@ -1,10 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import logo from "../images/logo.png";
 import PlayerModal from "../components/PlayerModal";
 import ActionWindow from "../components/ActionWindow";
 import TradingSheet from "../components/TradingSheet";
 
 const GameplayPage = () => {
+  const [showTradingSheet, setShowTradingSheet] = useState(true);
+  const tradingSheetHandler = (val) => {
+    setShowTradingSheet(val);
+  };
   return (
     <div className="flex w-full h-full items-center justify-center static">
       <img
@@ -20,9 +24,9 @@ const GameplayPage = () => {
             <PlayerModal playerNr={3} />
           </div>
 
-          <TradingSheet />
+          {showTradingSheet && <TradingSheet />}
 
-          <ActionWindow />
+          <ActionWindow tradingSheetHandler={tradingSheetHandler} />
 
           <PlayerModal playerNr={1} extraStyles="mb-5" />
         </div>

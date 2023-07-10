@@ -14,40 +14,40 @@ const TradingSheet = () => {
         Cheat Sheet
       </div>
       <div className="p-2 flex gap-2 justify-center border-b-4 border-black">
-        6 <span className="text-3xl mt-1">x</span>
+        1<span className="text-3xl mt-1">x</span>
+        <Sheep className="h-[35px] w-[35px]" />= 6{" "}
+        <span className="text-3xl mt-1">x</span>
         <Rabbit className="h-[35px] w-[35px] " />
-        = 1<span className="text-3xl mt-1">x</span>
-        <Sheep className="h-[35px] w-[35px]" />
+      </div>
+      <div className="p-2 flex gap-2 justify-center border-b-4 border-black">
+        2<span className="text-3xl mt-1">x</span>
+        <Sheep className="h-[35px] w-[35px]" />= 1
+        <span className="text-3xl mt-1">x</span>
+        <Pig className="h-[35px] w-[35px] " />
+      </div>
+      <div className="p-2 flex gap-2 justify-center border-b-4 border-black">
+        3<span className="text-3xl mt-1">x</span>
+        <Pig className="h-[35px] w-[35px]" />= 1
+        <span className="text-3xl mt-1">x</span>
+        <Cow className="h-[35px] w-[35px] " />
+      </div>
+      <div className="p-2 flex gap-2 justify-center border-b-4 border-black">
+        2<span className="text-3xl mt-1">x</span>
+        <Cow className="h-[35px] w-[35px]" />= 1
+        <span className="text-3xl mt-1">x</span>
+        <Horse className="h-[35px] w-[35px] " />
       </div>
       <div className="p-2 flex gap-2 justify-center border-b-4 border-black">
         1<span className="text-3xl mt-1">x</span>
-        <Pig className="h-[35px] w-[35px] " />= 2
+        <Sheep className="h-[35px] w-[35px]" />= 1
         <span className="text-3xl mt-1">x</span>
-        <Sheep className="h-[35px] w-[35px]" />
-      </div>
-      <div className="p-2 flex gap-2 justify-center border-b-4 border-black">
-        1<span className="text-3xl mt-1">x</span>
-        <Cow className="h-[35px] w-[35px] " />= 3
-        <span className="text-3xl mt-1">x</span>
-        <Pig className="h-[35px] w-[35px]" />
-      </div>
-      <div className="p-2 flex gap-2 justify-center border-b-4 border-black">
-        1<span className="text-3xl mt-1">x</span>
-        <Horse className="h-[35px] w-[35px] " />= 2
-        <span className="text-3xl mt-1">x</span>
-        <Cow className="h-[35px] w-[35px]" />
-      </div>
-      <div className="p-2 flex gap-2 justify-center border-b-4 border-black">
-        1<span className="text-3xl mt-1">x</span>
-        <SmallDog className="h-[35px] w-[35px] " />= 1
-        <span className="text-3xl mt-1">x</span>
-        <Sheep className="h-[35px] w-[35px]" />
+        <SmallDog className="h-[35px] w-[35px] " />
       </div>
       <div className="p-2 flex gap-2 justify-center">
         1<span className="text-3xl mt-1">x</span>
-        <BigDog className="h-[35px] w-[35px] " />= 1
+        <Cow className="h-[35px] w-[35px]" />= 1
         <span className="text-3xl mt-1">x</span>
-        <Cow className="h-[35px] w-[35px]" />
+        <BigDog className="h-[35px] w-[35px] " />
       </div>
     </div>
   );

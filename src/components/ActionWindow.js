@@ -7,12 +7,19 @@ import TurnHandler from "./TurnHandler";
 import farmDifference from "./Helpers/FarmDifference";
 import EndTurnDisplay from "./EndTurnDisplay";
 import didWin from "./Helpers/didWin";
-const ActionWindow = () => {
+const ActionWindow = (props) => {
   const { isHuman, turn, nextTurn, farm } = usePlayer1Store();
   const [oldFarm, setOldFarm] = useState(null);
   const [phase, setPhase] = useState("trade");
   const [animalsBalance, setAnimalsBalance] = useState([]);
   const [didSomeoneWin, setDidSomeoneWin] = useState(false);
+  useEffect(() => {
+    if (phase === "trade" && isHuman[turn] === true) {
+      props.tradingSheetHandler(false);
+    } else {
+      props.tradingSheetHandler(true);
+    }
+  }, [phase])
   useEffect(() => {
     if (phase === "afterRoll") {
       setTimeout(() => {
@@ -48,8 +55,8 @@ const ActionWindow = () => {
         <div>
           <TurnHandler key={"turnHand"} afterRoll={afterRollHandler} />
           {
-            <div className="text-black border-4 w-[500px] border-black bg-white text-3xl ">
-              <div className={`w-full bg-green-600 px-4 py-3 text-white ${!phase==="trade"?"border-b-4": "border-b-0"} border-black`}>
+            <div className={`text-black border-4  ${(phase==="trade" && isHuman[turn])?"w-[600px]":"w-[500px"} border-black bg-white text-3xl `}>
+              <div className={`w-full bg-green-600 px-4 py-3 text-white border-b-4 border-black`}>
                 {phase === "trade" && (
                   <div> Player {(turn % 4) + 1} : Trade Phase</div>
                 )}

@@ -9,7 +9,7 @@ const TradeAction = (props) => {
   return (
     <Fragment>
       <TradesList phaseHandler={ props.phaseHandler } />
-      <div className="flex justify-end"><div className="border-4 border-black w-1/4 m-3 rounded-xl bg-amber-500 hover:bg-amber-400 cursor-pointer" onClick={props.phaseHandler}>SKIP</div></div>
+      <div className="flex justify-end"><div className="border-4 border-black  px-3 m-2 rounded-xl bg-amber-500 hover:bg-amber-400 cursor-pointer text-2xl" onClick={props.phaseHandler}>SKIP</div></div>
       
     </Fragment>
   );
